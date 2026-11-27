@@ -23,8 +23,6 @@
 
 // ===== SETTINGS =====
 const ES_FOLDER_ID = '1ndnJNlTW3HeZ3DgQ0jKKOKar7BvGTX5T';   // 105 VM > 00 OWNER ONLY - Jeff > Email Inbox
-const ES_AGING_FOLDER_ID = '1Kng5Kr9YmnuptEPdo2TrxydSAOJ_Lvx9'; // 105 VM > 00 OWNER ONLY - Jeff > Reports > QBO AP Aging
-const ES_LABEL_QBO = 'QBO Reports';
 const ES_LIVE_DATE = '2026/11/27';                           // mail received on/after this date (YYYY/MM/DD)
 const ES_LABEL_INVOICES = 'Invoices';                        // Jeff's existing Gmail folder
 const ES_LABEL_LOBLAWS = 'Loblaws';                          // Jeff's existing Gmail folder
@@ -49,27 +47,6 @@ const ES_BANKING_PHRASES = ['banking information', 'banking details', 'bank deta
   'change of bank', 'changed our bank', 'updated banking', 'update our banking', 'wire transfer',
   'direct deposit', 'void cheque', 'void check', 'payment instructions', 'remit to a new', 'new remittance'];
 
-// QBO scheduled 'A/P Aging Detail' email (from Intuit/QuickBooks): every attachment (Excel/CSV/PDF) is saved as
-// 'YYYY-MM-DD_QBO AP Aging_<name>' in OWNER ONLY > Reports > QBO AP Aging, then labelled and archived. Returns true if handled.
-function saveQboAging_(thread, msgs, L) {
-  const m0 = msgs[msgs.length - 1];
-  const from = (m0.getFrom() || '').toLowerCase(), subject = (m0.getSubject() || '').toLowerCase();
-  if (!(from.indexOf('intuit') !== -1 || from.indexOf('quickbooks') !== -1) || subject.indexOf('aging') === -1) return false;
-  const folder = DriveApp.getFolderById(ES_AGING_FOLDER_ID);
-  let saved = 0;
-  msgs.forEach(msg => {
-    const dateStr = Utilities.formatDate(msg.getDate(), 'America/Toronto', 'yyyy-MM-dd');
-    msg.getAttachments({ includeInlineImages: false }).forEach(a => {
-      const name = dateStr + '_QBO AP Aging_' + (a.getName() || 'report').replace(/[\\\/:*?"<>|]/g, '-');
-      if (!folder.getFilesByName(name).hasNext()) folder.createFile(a.copyBlob().setName(name));
-      saved++;
-    });
-  });
-  if (!saved) return false;                        // link-only email: leave it for Jeff
-  thread.addLabel(L.saved); thread.addLabel(label_(ES_LABEL_QBO)); thread.moveToArchive();
-  return true;
-}
-
 // ===== MAIN (trigger runs this) =====
 function vmProcessInvoiceEmails() {
   const start = Date.now();
@@ -90,7 +67,6 @@ function vmProcessInvoiceEmails() {
 
 function handleThread_(thread, folder, L) {
   const msgs = thread.getMessages();
-  if (saveQboAging_(thread, msgs, L)) return;     // QBO A/P Aging report -> owner-only Reports folder, never the invoice inbox
   let savedAny = false, invoiceLike = false, banking = false, loblaws = false, allSaved = true;
 
   const liveFrom = new Date(ES_LIVE_DATE.replace(/\//g, '-') + 'T00:00:00');
