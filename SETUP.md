@@ -16,7 +16,7 @@
 The "VM AP Invoice Processing" task was blocked by an approval check. Tell Claude "go ahead and create the VM AP task" (or create it yourself from `scheduled-tasks/VM AP Invoice Processing.md`).
 
 ## 3. Decisions before Dec 2
-- Margin targets: Price & Margin Log > Targets tab (DRAFT).
+- Margin targets: reset from the PLU list + VM P&L (current drafts are too low).
 - Labour: Labour Control > Settings - target sales per labour hour ($120 draft = ~15% labour) and minimum hours per day (16 draft).
 
 ## 4. Data Claude needs

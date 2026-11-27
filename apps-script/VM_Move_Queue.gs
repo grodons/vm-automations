@@ -26,8 +26,8 @@ const MQ_MAX_PER_RUN = 60;
 const MQ_TIME_BUDGET_MS = 4 * 60 * 1000;
 
 // Bill entry sheets whose month tabs get coloured (yellow = rows not ticked, green = all ticked)
-const TC_SHEET_IDS = ['1X976HJqrvGzCM4P0kqg9A6OKFMEr1jBZehveBigT6WA',      // VM FY2026 QBO Bill Entries
-                      '1byckuBPYhDHhnKnthJeIscrWlOk_CKIxtF6zWZ7M7Ss'];     // VM FY2027 QBO Bill Entries
+const TC_SHEET_IDS = ['1X976HJqrvGzCM4P0kqg9A6OKFMEr1jBZehveBigT6WA',      // VM 2026 QBO Bill Entries
+                      '1byckuBPYhDHhnKnthJeIscrWlOk_CKIxtF6zWZ7M7Ss'];     // VM 2027 QBO Bill Entries
 
 function vmProcessMoveQueue() {
   const start = Date.now();

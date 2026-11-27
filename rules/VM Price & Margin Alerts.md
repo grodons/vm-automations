@@ -11,7 +11,7 @@ Village Market sits inside the Blue Mountain resort: rent and costs are high, so
 
 ## 2. Locations
 
-- Source: the VM QBO Bill Entries sheets (FY2026 1X976HJqrvGzCM4P0kqg9A6OKFMEr1jBZehveBigT6WA, FY2027 1byckuBPYhDHhnKnthJeIscrWlOk_CKIxtF6zWZ7M7Ss). Each row's PDF link points to the invoice.
+- Source: the VM QBO Bill Entries sheets (VM 2026 1X976HJqrvGzCM4P0kqg9A6OKFMEr1jBZehveBigT6WA, VM 2027 1byckuBPYhDHhnKnthJeIscrWlOk_CKIxtF6zWZ7M7Ss). Each row's PDF link points to the invoice.
 - Log: "VM Price & Margin Log" (ID 1i10aLUd2dx0Me5aWImdDcB6nzc_8d2O56Rl3sJBhu6A) in Operations > 00 Claude > Pricing & Margin. Tabs: How it works, Targets, Margin Check, Alerts, Ledger, PLU.
 - Emails: VM_Alerts script in the jeff@villagemarketatblue.com Apps Script project. Recipient fixed: chrissan@villagemarketatblue.com (Jeff copied).
 
@@ -37,7 +37,7 @@ Unit cost = price per unit actually charged after line discounts. Skip deposits,
 ## 6. Margin targets (Targets tab)
 
 Target margin per L-BOSS department. Tobacco = Excluded (price sensitive). Lottery = Excluded (OLG sets prices). Floor = 30%: any item under it is CRITICAL.
-Targets are DRAFT until Jeff signs off; they will be replaced by the department targets from the "VM Breakeven & Margin Model" (task on Jeff's tracker). Only Jeff changes targets.
+Targets are placeholders: Jeff says they are far too low (2026-11-27). They will be reset from the PLU list (current retail vs invoice cost) and the VM P&L (actual gross margin); they will be replaced by the department targets from the "VM Breakeven & Margin Model" (task on Jeff's tracker). Only Jeff changes targets.
 
 ## 7. PLU tab and costs
 
@@ -66,3 +66,4 @@ One or two lines: invoices logged, increases queued, how many below target, any 
 ## 11. Change log
 
 - 2026-11-27: Created. Chrissan receives all VM alerts; department targets drafted; Tobacco and Lottery excluded from margin targets.
+- 2026-11-27 (Jeff): draft targets far too low - reset from PLU + P&L analysis. Bill sheets are now calendar year.

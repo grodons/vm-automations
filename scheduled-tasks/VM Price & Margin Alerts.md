@@ -12,7 +12,7 @@ You are running the daily VM Price & Margin Alerts task for Village Market (Blue
 
 STEP 1 - Read the rules first: Google Doc "VM Price & Margin Alerts" (ID 1e1lS5d5PhDKNxK0bbYd7PJPgsVvPJ1fMFl-edqdEB8g, in Operations > 00 Claude > Claude Rules), including fail-safes and change log. It is the authority. If it cannot be read, stop.
 
-STEP 2 - On both VM QBO Bill Entries sheets (FY2026 1X976HJqrvGzCM4P0kqg9A6OKFMEr1jBZehveBigT6WA, FY2027 1byckuBPYhDHhnKnthJeIscrWlOk_CKIxtF6zWZ7M7Ss), list Type = Bill rows (find columns by header: Vendor, Type, Invoice Date, Invoice #, PDF). Compare with the Ledger tab of "VM Price & Margin Log" (ID 1i10aLUd2dx0Me5aWImdDcB6nzc_8d2O56Rl3sJBhu6A). Take bills not yet on the Ledger, skipping utilities/services and OLG as the rules say. Order: dated 2026-11-27 or later first (oldest first), then baseline 2026-10-01 to 2026-11-26 (newest first). Max 40 invoices.
+STEP 2 - On both VM QBO Bill Entries sheets (VM 2026 1X976HJqrvGzCM4P0kqg9A6OKFMEr1jBZehveBigT6WA, VM 2027 1byckuBPYhDHhnKnthJeIscrWlOk_CKIxtF6zWZ7M7Ss), list Type = Bill rows (find columns by header: Vendor, Type, Invoice Date, Invoice #, PDF). Compare with the Ledger tab of "VM Price & Margin Log" (ID 1i10aLUd2dx0Me5aWImdDcB6nzc_8d2O56Rl3sJBhu6A). Take bills not yet on the Ledger, skipping utilities/services and OLG as the rules say. Order: dated 2026-11-27 or later first (oldest first), then baseline 2026-10-01 to 2026-11-26 (newest first). Max 40 invoices.
 
 STEP 3 - For each invoice open the PDF and write one Ledger row per product line (A:O; N UPC as text, O units per case). Skip deposits, eco fees, delivery, totals, shorted lines.
 

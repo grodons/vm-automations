@@ -43,14 +43,14 @@ Jeff is copied on every Chrissan email (VA_CC_JEFF in VM_Alerts.gs).
 | 13 VM DUPLICATES - REVIEW | 1eQ2ENowb_KnS_ggTPGkN06_4nJ7cRIP- |
 | Loblaws vendor / Loblaws > Statements | 1Cp_VC81qtwRAFg6nhmmLW8Fd-kx7YcUM / 17QRqmCB9YeGhcEEv0UIwvB6qPe71lZEs |
 | VM Sales Invoices (daily GL Financial PDFs by year) | 1b9AQ2CVszdUXEmOmDO2BcK6bpkdVoFej |
-| VM 7Shifts summaries 2026 (payroll) | 1waZC0dx69Y8zsXyQBAUjgxlrznzqEtFN |
+| VM Employees > Payroll > 2026 > 7Shifts | 1waZC0dx69Y8zsXyQBAUjgxlrznzqEtFN |
 
 ## 3. Sheets and docs
 
 | File | ID | Who sees it |
 |---|---|---|
-| VM FY2026 QBO Bill Entries (to Nov 30 2026) | 1X976HJqrvGzCM4P0kqg9A6OKFMEr1jBZehveBigT6WA | Jeff only |
-| VM FY2027 QBO Bill Entries | 1byckuBPYhDHhnKnthJeIscrWlOk_CKIxtF6zWZ7M7Ss | Jeff only |
+| VM 2026 QBO Bill Entries | 1X976HJqrvGzCM4P0kqg9A6OKFMEr1jBZehveBigT6WA | Jeff only |
+| VM 2027 QBO Bill Entries | 1byckuBPYhDHhnKnthJeIscrWlOk_CKIxtF6zWZ7M7Ss | Jeff only |
 | VM AP Move Queue | 1uhBbGCocSJBFNFdJLVuDeWb-XwJVwMPVZAKbZNrDtfU | Jeff only |
 | VM Labour Rate (OWNER ONLY) | 1vIhbk_ecPNYQMWp2aLTdL4OW8H1kN9OoyDJcc3pD8pw | Jeff only |
 | VM Price & Margin Log (Alerts, Ledger, PLU, Targets, Margin Check) | 1i10aLUd2dx0Me5aWImdDcB6nzc_8d2O56Rl3sJBhu6A | Operations (Chrissan) |

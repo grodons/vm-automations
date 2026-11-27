@@ -4,7 +4,7 @@
 **Runs:** Daily at 6:13 pm (America/Toronto)
 **Business:** Village Market only (5044713 Ontario Inc., 156 Jozo Weider Blvd, Blue Mountain). Gordon's is out of scope.
 **Owner:** Jeff Meakings. All rule changes are made in this document. Claude reads it at the start of every run and follows it exactly.
-**Fiscal year:** December 1 to November 30. Year end: November 30, 2026.
+**Fiscal year:** December 1 to November 30. Year end: November 30, 2026. Bill entry sheets are by CALENDAR year (Jan-Dec); the fiscal year only drives the year-end accrual flag.
 
 ## 1. Locations (Google Drive, 105 Village Market)
 
@@ -14,8 +14,8 @@
 - Review folder: "12 VM NEEDS REVIEW" (ID 10Mf5s3dALwd7aB8IkokrA-ODnyQDTGM_)
 - Duplicates folder: "13 VM DUPLICATES - REVIEW" (ID 1eQ2ENowb_KnS_ggTPGkN06_4nJ7cRIP-)
 - Bill entry sheets (OWNER ONLY): 00 OWNER ONLY - Jeff > QBO Bill Entries (ID 1Oiyg6ooBcP4qN2PlpZsZPM4Gm5FKzfBR)
-  - "VM FY2026 QBO Bill Entries" (ID 1X976HJqrvGzCM4P0kqg9A6OKFMEr1jBZehveBigT6WA): invoices dated up to and including 2026-11-30
-  - "VM FY2027 QBO Bill Entries" (ID 1byckuBPYhDHhnKnthJeIscrWlOk_CKIxtF6zWZ7M7Ss): invoices dated 2026-12-01 to 2027-11-30
+  - "VM 2026 QBO Bill Entries" (ID 1X976HJqrvGzCM4P0kqg9A6OKFMEr1jBZehveBigT6WA): invoices dated in calendar 2026 (and any earlier backlog)
+  - "VM 2027 QBO Bill Entries" (ID 1byckuBPYhDHhnKnthJeIscrWlOk_CKIxtF6zWZ7M7Ss): invoices dated in calendar 2027
 - Move queue (OWNER ONLY): "VM AP Move Queue" (ID 1uhBbGCocSJBFNFdJLVuDeWb-XwJVwMPVZAKbZNrDtfU)
 - Loblaws vendor folder: "Loblaws" (ID 1Cp_VC81qtwRAFg6nhmmLW8Fd-kx7YcUM). Loblaws statements go in Loblaws > Statements (ID 17QRqmCB9YeGhcEEv0UIwvB6qPe71lZEs) > year folder (2026 = 187nXUziMVea1Fs_UMVYRbQcj4quTNi6X).
 - Never file into "00 ARCHIVED" or "0 Accounts payable", or any Gordon's folder.
@@ -28,7 +28,7 @@
 4. Match the vendor to an existing vendor folder (section 3).
 5. Duplicate check (section 7).
 6. Queue the rename + move (section 10). Claude never moves files itself.
-7. If it is a bill, credit memo or receipt: add a row to the correct fiscal-year sheet (section 8), with flags (section 9).
+7. If it is a bill, credit memo or receipt: add a row to the correct calendar-year sheet (section 8), with flags (section 9).
 
 If a required field cannot be read with confidence, do not guess: queue it to 12 VM NEEDS REVIEW with its original name and list it in the run summary with the reason.
 
@@ -65,20 +65,20 @@ Terms: as printed (Net 7, Net 14, EFT, PAD, Due on receipt...). None printed: Ne
 
 ## 7. Duplicate check
 
-Search ALL of 1Purchase Invoices VM (every vendor folder) and both FY sheets for the invoice number (with and without leading zeros).
+Search ALL of 1Purchase Invoices VM (every vendor folder) and the current and prior calendar-year sheets for the invoice number (with and without leading zeros).
 - Same vendor + invoice # already there: name "_DUPLICATE", queue to 13 VM DUPLICATES - REVIEW, no sheet row.
 - Found under a different vendor: vendor was misread. Queue to 12 VM NEEDS REVIEW and flag.
 - Email copy of an invoice that was also scanned (or vice versa): the second one is the duplicate.
 
-## 8. Bill entry sheets (fiscal year)
+## 8. Bill entry sheets (calendar year)
 
-- One sheet per fiscal year. **Invoice date decides the sheet**: up to 2026-11-30 -> VM FY2026; 2026-12-01 onward -> VM FY2027. Never put a November invoice on the FY2027 sheet, even if it arrives in December (year-end cut-off).
+- One sheet per calendar year: "VM YYYY QBO Bill Entries". **The invoice date decides the sheet and the month tab** (a December 2026 invoice goes on VM 2026 > Dec 2026, even if it arrives in January).
 - One tab per month named "Mon YYYY" (e.g. "Nov 2026"). Create a month tab when the first invoice for that month arrives: same headers, checkbox in column A to row 1000, and column F formula =IF(B2="","",N(H2)-N(G2)) down to row 1000.
 - Columns A to O: Entered in QBO (checkbox) | Vendor | Type (Bill/CM/Receipt) | Invoice Date (YYYY-MM-DD) | Invoice # | Net (formula - never write) | HST | Total | Deposit | Delivery/Shipping | Terms | PDF (=HYPERLINK to the file) | Flag | Source (Scan/Email) | Date Added. Write B:E and G:O only.
 - Write into the first empty row (column B blank). Never use append. Then sort data rows by Vendor A-Z, then Invoice Date.
 - Tab colours are set by the VM script (yellow = unticked rows, green = all ticked). Claude does not colour tabs.
 - FY2026 invoices added on or after 2026-12-01 get Flag "LATE - FY2026 year-end accrual" so Jeff can catch them for year end.
-- Before 2026-12-01 a FY2027 sheet exists only with an empty Dec 2026 tab. On the first run in November 2027, create "VM FY2028 QBO Bill Entries" the same way.
+- VM 2027 exists with an empty Jan 2027 tab. On the first run in December each year, create next year's sheet the same way (headers, checkboxes, column F formula) in the QBO Bill Entries folder.
 
 ## 9. Flags (column M)
 
@@ -123,4 +123,5 @@ Short bullets for Jeff, under 2 minutes: first line "All scans readable - OK to 
 
 ## 14. Change log
 
-- 2026-11-27: Created for the Village Market build (repo grodons/vm-automations). Fiscal-year sheets, owner-only storage, email saver for jeff@villagemarketatblue.com with Gmail sorting (Loblaws -> "Loblaws", others -> "Invoices"), Loblaws statements to Loblaws > Statements.
+- 2026-11-27: Created for the Village Market build (repo grodons/vm-automations). Owner-only storage, email saver for jeff@villagemarketatblue.com with Gmail sorting (Loblaws -> "Loblaws", others -> "Invoices"), Loblaws statements to Loblaws > Statements.
+- 2026-11-27 (Jeff): bill sheets switched from fiscal year to calendar year (VM 2026 / VM 2027 QBO Bill Entries).
