@@ -56,4 +56,5 @@ Bullets for Jeff: last week sales ex-lottery, actual hours, earned hours, over/u
 ## 7. Change log
 
 - 2026-11-27: Created. Draft settings: SPLH $120, minimum 16 hours/day.
-- 2026-11-27 (2): Interim SPLH $150 (about 12.5% labour at the Nov 2026 blended rate) and minimum 13 hours/day (current one-person coverage). Final SPLH to be set from the VM P&L per section 3. 7shifts files live in Employees > Payroll > YYYY > 7Shifts.
+- 2026-11-27 (2): Interim SPLH $150 (about 12.5% labour at the Nov 2026 blended rate) and minimum 13 hours/day (current one-person coverage). Final SPLH to be set from the VM P&L per section 3.
+- 2026-11-27 (3, Jeff approved the plan): SPLH set to $200. The FY2027 profit plan keeps staff payroll at 9.57% of net sales (FY2026 actual, Jeff's own pay excluded); at the Nov 2026 blended rate plus payroll taxes that equals $200 of sales ex-lottery per staff hour. Jeff's hours are not part of this budget. 7shifts files live in Employees > Payroll > YYYY > 7Shifts.
