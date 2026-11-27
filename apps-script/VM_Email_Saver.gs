@@ -69,7 +69,9 @@ function handleThread_(thread, folder, L) {
   const msgs = thread.getMessages();
   let savedAny = false, invoiceLike = false, banking = false, loblaws = false, allSaved = true;
 
+  const liveFrom = new Date(ES_LIVE_DATE.replace(/\//g, '-') + 'T00:00:00');
   msgs.forEach(msg => {
+    if (msg.getDate() < liveFrom) return;          // older messages in a long thread are never saved
     const from = (msg.getFrom() || '').toLowerCase();
     if (ES_IGNORE.some(x => from.indexOf(x) !== -1)) return;
     const pdfs = msg.getAttachments({ includeInlineImages: false }).filter(a =>
