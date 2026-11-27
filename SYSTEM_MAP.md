@@ -59,7 +59,7 @@ Jeff is copied on every Chrissan email (VA_CC_JEFF in VM_Alerts.gs).
 | Rules: VM Price & Margin Alerts | 1e1lS5d5PhDKNxK0bbYd7PJPgsVvPJ1fMFl-edqdEB8g | |
 | Rules: VM Labour Control | 12qGQBxO8zAxbQd8k69l6gYyWDJGbo_PMmNWLixC_XBM | |
 | SOP - Pricing & Margin (Chrissan) - Operations > 02 Instructions & Job Aids | 1wh9mb4ooeMwWvlwLj54jMacQ3RVtCKBgHdLVITwsfDc | Chrissan |
-| SOP - Scanning Invoices to Drive - Operations > 02 Instructions & Job Aids | 14b5rZsjQsn1Rv9yQnZ7zy9zfxglDCukBq3HqSio6qqM | All staff |
+| SOP - Scanning Invoices - Operations > 02 Instructions & Job Aids (print for staff) | 15S9MqRNuW8HfZw1ZQcJyhJPaOZAPxjIBy2DWtDq9J0A | All staff (printed), Chrissan |
 | VM Winter Best Sellers (NEVER OUT list) | 1UgUYumdm0URGqIdgFKHo_KdOY39FBqZTb0GZVakRXvE | Chrissan |
 
 ## 4. Accounts
