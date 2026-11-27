@@ -41,8 +41,8 @@ Targets are placeholders: Jeff says they are far too low (2026-11-27). They will
 
 ## 7. PLU tab and costs
 
-- PLU tab = the L-BOSS PLU export (PLU # as 14-digit text, Vendor SKU, Description, Dept #, Retail, Unit cost if the export has it). When Jeff saves a newer export named "YYMM DD PLU List" (CSV/XLSX) in Pricing & Margin, report it; Claude reloads it in a chat session, not in the nightly run.
-- When loading, fill Targets column A (Dept #) for each department name so the lookups work.
+- PLU tab = the L-BOSS PLU export (PLU # stored as a number shown with 14 digits, Vendor SKU as a number, Description, Dept # = L-BOSS sub-dept number, Retail). Loaded 2026-11-27 from "2611 27 PLU LIST.csv" (PLU List subfolder): 9,943 items in live sub-depts 1-15 and 97. L-BOSS holds NO item costs ($0.00 on every item), so unit cost (column F) comes only from invoices via the Ledger. UPC match: invoice UPC without its check digit = PLU #. When Jeff saves a newer export named "YYMM DD PLU List" (CSV/XLSX) in Pricing & Margin, report it; Claude reloads it in a chat session, not in the nightly run.
+- Targets column A holds the L-BOSS sub-dept numbers (1 Grocery, 3 Meat, 4 Deli, 5 Confectionary, 6 Dairy, 7 Household, 8 Hard goods, 9 Bakery, 10 Produce, 11 Floral, 12 Frozen, 13 Beverages, 14 Health & Beauty, 15 Tobacco, 97 Lottery). Sub-dept 2 is unmapped. New PLU exports go in Pricing & Margin > PLU List; reload in a chat session.
 - Nightly: for every NEW (non-baseline) Ledger line that matches a PLU row (UPC first, else unique Vendor SKU), write the per-unit cost (Unit cost / Units per case) into PLU column F, "Invoice" in L and the invoice date in M. Only update when the invoice date is newer than column M. Never touch PLU columns A:E or the formula columns G:K.
 
 ## 8. Emails (done by the script, for reference)
