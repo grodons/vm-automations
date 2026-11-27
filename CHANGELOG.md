@@ -1,0 +1,3 @@
+# Changelog
+
+- 2026-11-27: Repo created. Drive: Operations > 00 Claude (Claude Rules, Pricing & Margin, Labour), 00 OWNER ONLY - Jeff (Email Inbox, QBO Bill Entries, Breakeven & Margin Model), 12 VM NEEDS REVIEW, 13 VM DUPLICATES - REVIEW. Sheets: VM FY2026/FY2027 QBO Bill Entries, VM AP Move Queue, VM Labour Rate, VM Price & Margin Log, VM Labour Control. Rules docs x3. Apps Script: VM_Email_Saver (Gmail "Loblaws"/"Invoices" sorting), VM_Move_Queue (+ tab colours), VM_Alerts (Chrissan emails). Scheduled tasks: VM Price & Margin Alerts, VM Labour Control created; VM AP Invoice Processing waiting on Jeff's approval. Margin targets and labour settings are DRAFT.
