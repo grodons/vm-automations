@@ -45,7 +45,7 @@ Jeff is copied on every Chrissan email (VA_CC_JEFF in VM_Alerts.gs).
 | Operations > 05 Forms & Templates (was Templates) | 15R-ujTn3BHzU37yUWN51MfzB71K0x6vH |
 | Operations > 06 Inventory, Suppliers & POS | 1APvuJlxq-6fqY0Dxbl-VdvsCH2ZhGV6E |
 | Operations > 07 Brand & Logos (was Logos) | 10NrOmsCqrTIJ2tYzBss8ey0ty6uDX9yy |
-| Operations > 98 TO DELETE - Jeff to review | 14q8zC70zt3NFBQ3wcp7Z0XRsSb4e-3oo |
+| Operations > 99 Archive (nothing is ever deleted) | 14q8zC70zt3NFBQ3wcp7Z0XRsSb4e-3oo |
 | Operations > 00 READ ME - Operations Folder Guide (Doc) | 1p1khs08yALzBdwpCciPhJM82NIItJ22lwcxCxHSxkMg |
 | OWNER ONLY > Company & Banking Records | 1kP_tFeYYHRWH9ibJmBc_SzL81k9Ots1A |
 | OWNER ONLY > VM Operations Reorg Plan (sheet, run by VM_Ops_Reorg.gs) | 1faiunA3zCFb_HUcKYgHOJM0VU2uF12v28tk_JWj6pT4 |

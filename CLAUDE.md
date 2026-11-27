@@ -8,3 +8,4 @@
 - Every automation needs fail-safes so no AI can make a costly mistake. Keep docs plain-language for Jeff (non-technical owner).
 - Asset sale planned: nothing here transfers to a buyer.
 - BRAND (Jeff, 2026-11-27): every document Claude creates for VM follows `brand/BRAND.md` (black & white, Futura look - Jost in Google Docs, VM logo with clear space).
+- NO DELETING (Jeff, 2026-11-27): the VM drive is owned by jeff@gordonsmarket.ca. Never delete or trash anything in it - only sort and organize. Superseded or junk files go to Operations > 99 Archive (14q8zC70zt3NFBQ3wcp7Z0XRsSb4e-3oo); owner-only material goes to 00 OWNER ONLY - Jeff.

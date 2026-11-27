@@ -1,6 +1,7 @@
 /**
  * VM Operations Reorg - one-time clean-up of 105 Village Market > Operations
- * Runs in the jeff@villagemarketatblue.com Apps Script project "Village Market Automations".
+ * Run it signed in as jeff@gordonsmarket.ca (owner of the VM drive): script.google.com > New project > paste > save.
+ * (It also works from the "Village Market Automations" project, but owner moves never hit permission errors.)
  *
  * Reads the "VM Operations Reorg Plan (OWNER ONLY)" sheet: one row per file/folder to move and/or rename.
  *
@@ -11,7 +12,7 @@
  *   4. Changed your mind? vmReorgUndo puts every "Done" row back where it was, with its old name.
  *
  * FAIL-SAFES
- *  - Never deletes or trashes anything. "To delete" items only go to Operations > 98 TO DELETE for you to review.
+ *  - Never deletes or trashes anything (Jeff: nothing in the VM drive is ever deleted). Old/duplicate items go to Operations > 99 Archive.
  *  - Only touches items that are inside Operations or Jeff's VM OWNER ONLY folder.
  *  - Only moves INTO Operations or VM OWNER ONLY. Never anywhere else.
  *  - Checks the item is still in the folder the plan expects. If someone moved it, the row is skipped.

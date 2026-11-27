@@ -15,7 +15,7 @@ Every file has one home. If you're not sure where something goes, use this table
 | **06 Inventory, Suppliers & POS** | Inventory counts and pricing, tobacco suppliers, Loblaws claim forms, POS instructions, Gordon's Grab and Go. |
 | **07 Brand & Logos** | Logos and brand guidelines. Use these files only. Never redraw or stretch the logo. |
 | **08 Village Association (BMVA)** | Blue Mountain Village Association papers. |
-| **98 TO DELETE - Jeff to review** | Junk and duplicates waiting for Jeff to delete. Don't use anything in here. |
+| **99 Archive** | Old, duplicate or out-of-date files kept for the record. Nothing is ever deleted - old versions come here instead. |
 
 ## Rules for filing
 
