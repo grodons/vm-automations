@@ -119,3 +119,4 @@ Jeff is copied on every Chrissan email (VA_CC_JEFF in VM_Alerts.gs).
 | 2611 27 VM PLU Clean-up & Best Sellers.xlsx | 14oOFfek0yQgjirYQVmpE0Xp7bqq4Q_Xt | 00 Claude > Pricing & Margin |
 | Scheduled task: VM Weekly Checks (Mon 5:41 am) | trig_01LJg6cTniHPcFtEqDwFzs1b | rules doc 135dL3Y-K94BsoE49s8iG5BpBFwGxVaqEDMkaPrOBBTM |
 | VM Weekly Checks sheet | 1da0hI395uHx1ADlg2JxWEiTXlZ6E7vwFcjvw4Q_PYhM | Operations > 00 Claude; email vmSendWeeklyChecks Mon 8 am |
+| 00 Manager Task Manager - Chrissan (Google Sheet) | 1JrewoP2dVrbCATSpKOjkfGoInLNLDZ1o4je92sok1Sc | Operations top level; tabs Tasks (17 seeded) + Recurring (17 routines) |
