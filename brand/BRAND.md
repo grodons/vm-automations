@@ -10,3 +10,5 @@ Source: VM-brand_guidelines.pdf (Boycott Inc., 2021) in Operations > 07 Brand & 
   - Horizontal lockup for page headers; vertical lockup for tight wide spaces; logomark alone only where the name already appears.
   - Keep clear space around it (at least the height of the circle). No stretching, outlines, effects, flipping, overlapping, or using pieces on their own.
 - File types: PNG/JPG for screen, PDF/SVG/EPS for print.
+- How Claude makes branded Google Docs: build a .docx with font "Jost" and the logo image (tools/build_sops_201127.js), then upload with conversion. Google keeps Jost, bold and the logo. (Restyling an existing Doc through the API resets bold - avoid.)
+- Excel forms: font "Century Gothic" (Futura-style, installed with Office) + logo (tools/build_forms.py).

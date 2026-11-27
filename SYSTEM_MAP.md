@@ -78,6 +78,10 @@ Jeff is copied on every Chrissan email (VA_CC_JEFF in VM_Alerts.gs).
 | SOP - Tobacco Counts - Operations > 02 Instructions & Job Aids (print for staff) | 19gJeQxDdh54WalgbGpGzajrKQTdehZR9awi3B2z_ts8 | All staff (printed), Chrissan |
 | SOP - Pricing & Margin (Chrissan) - Operations > 02 Instructions & Job Aids | 1wh9mb4ooeMwWvlwLj54jMacQ3RVtCKBgHdLVITwsfDc | Chrissan |
 | SOP - Scanning Invoices - Operations > 02 Instructions & Job Aids (print for staff) | 15S9MqRNuW8HfZw1ZQcJyhJPaOZAPxjIBy2DWtDq9J0A | All staff (printed), Chrissan |
+| SOP - Daily Floor Checks (02) | 1Kd_-3ZrHPTIbd5DaOsqpmLhmeGFuifE3zufTpkhZP-I | All staff (printed) |
+| SOP - OLG Scratch Ticket Weekly Reconciliation (02) | 1WeDMfkfJFOlW1iFppKokUNu0zVodx0VLeCQZKZ6uXvc | Chrissan |
+| SOP - Daily Store Tasks (02) | 1oI7hH7jLP23SdRUzxDw8SgiYNhefv2jVKS3HwLqZ6vY | All staff (printed) |
+| Forms (05): VM Daily Floor Check Log / VM Daily Task Sheet (weekly) / VM OLG Scratch Weekly Reconciliation (xlsx) | 1yN556t70gDniio15pZVyTCfGxuhKdsyr / 1bNrtQy5WqErSFsrXoybxIYhzortxR3l1 / 1sync_sARsCZOGxNWzMDtb0VXyKejzuEm | |
 | VM Winter Best Sellers (NEVER OUT list) | 1UgUYumdm0URGqIdgFKHo_KdOY39FBqZTb0GZVakRXvE | Chrissan |
 
 ## 4. Accounts
