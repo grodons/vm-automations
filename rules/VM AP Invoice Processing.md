@@ -52,6 +52,7 @@ Format: **YYMM DD Vendor InvoiceNumber.pdf** (e.g. 2611 20 Loblaws 6518380979.pd
 - OLG weekly invoices/statements: bills as usual (vendor folder OLG). Lottery is a pass-through; flag nothing about price.
 - Payment advice / remittance, packing slip, quote, order confirmation, insurance renewal, HR or personal documents, anything unclear: 12 VM NEEDS REVIEW with original name. Read HR/personal documents only far enough to know they are not invoices; never log personal details.
 - Multiple invoices in one PDF: 12 VM NEEDS REVIEW, flag "Multiple invoices in one file".
+- Tobacco count sheets (handwritten form titled "VILLAGE MARKET - TOBACCO COUNT"): not a bill - no sheet row, no addressee check. Name "YYMM DD Tobacco Count.pdf" where YYMM DD is the Monday "Week starting" date written on the sheet (unreadable = the Monday before the scan date; a second file for the same week = " p2", " p3"). Queue the move to Operations > Tobacco Counts > calendar-year folder (2026 = 15sO4o5viC6k65V_2HFJv-kutwljJR1eZ, 2027 = 1v7X0FSpnZYPiq1_0w7cjo-VaeEZ3Yl9O). The VM Tobacco Count Review task reads them from there.
 
 ## 5. Addressee check
 
@@ -125,3 +126,4 @@ Short bullets for Jeff, under 2 minutes: first line "All scans readable - OK to 
 
 - 2026-11-27: Created for the Village Market build (repo grodons/vm-automations). Owner-only storage, email saver for jeff@villagemarketatblue.com with Gmail sorting (Loblaws -> "Loblaws", others -> "Invoices"), Loblaws statements to Loblaws > Statements.
 - 2026-11-27 (Jeff): bill sheets switched from fiscal year to calendar year (VM 2026 / VM 2027 QBO Bill Entries).
+- 2026-11-27 (Jeff): tobacco count sheets are scanned to 11 VM SCANNED every Monday - file them in Operations > Tobacco Counts > year (section 4). Move queue script allows only "YYMM DD Tobacco Count.pdf" there.

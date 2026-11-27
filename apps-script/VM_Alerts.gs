@@ -17,6 +17,7 @@
 
 const VA_PRICE_ID = '1i10aLUd2dx0Me5aWImdDcB6nzc_8d2O56Rl3sJBhu6A';   // VM Price & Margin Log
 const VA_LABOUR_ID = '1kdP-EtyQPTVL8sSA6hiH9UZGyXQl37T-Twq__zQUcyI';  // VM Labour Control
+const VA_TOBACCO_ID = '1o2Qv8yl7dHdN2NNJlQjGwEJlqlFADKQs1u8BJViyGcU'; // VM Tobacco Count Log
 const VA_CHRISSAN = 'chrissan@villagemarketatblue.com';
 const VA_JEFF = 'jeff@gordonsmarket.ca';                              // copies + warnings
 const VA_CC_JEFF = true;                                              // Jeff copied on every Chrissan email
@@ -208,13 +209,48 @@ function send_(to, subject, html, ccJeff) {
   MailApp.sendEmail(opts);
 }
 
+// ---------- 6. Tobacco count review (daily 7am; sends only when Claude has written New rows) ----------
+function vmSendTobaccoReview() {
+  const sh = SpreadsheetApp.openById(VA_TOBACCO_ID).getSheetByName('Weekly Review');
+  const last = sh.getLastRow();
+  if (last < 2) return;
+  const data = sh.getRange(2, 1, last - 1, 16).getValues();
+  const idx = []; data.forEach((r, i) => { if (String(r[15]).trim() === 'New') idx.push(i); });
+  if (!idx.length) return;
+  if (idx.length > 400) { send_(VA_JEFF, 'VM tobacco review HELD - ' + idx.length + ' rows (limit 400)', 'Check the Weekly Review tab before anything is sent to Chrissan.', false); return; }
+  const rows = idx.map(i => data[i]);
+  const wk = rows[0][0] instanceof Date ? Utilities.formatDate(rows[0][0], VA_TZ, 'MMM d') : esc_(rows[0][0]);
+  const n = v => Number(v) || 0;
+  const items = rows.filter(r => String(r[2]) !== 'ALL');
+  const missing = items.filter(r => n(r[9]) > 0).sort((a, b) => n(b[9]) - n(a[9]));
+  const overnight = items.filter(r => n(r[10]) > 0);
+  const sheetIssues = rows.filter(r => String(r[2]) === 'ALL' || (String(r[14]).trim() !== '' && n(r[9]) <= 0 && n(r[10]) <= 0));
+  const order = items.filter(r => n(r[13]) > 0);
+  let html = '<div style="font-family:Arial;font-size:14px">Hi Chrissan,<br><br>Tobacco count review for the week starting <b>' + wk + '</b>.<br><br>';
+  html += '<b>1. Missing packs</b> (counted used is more than L-BOSS sold)<br>' + (missing.length ? table_(['Item', 'Used (counted)', 'Sold (L-BOSS)', 'Missing'],
+    missing.map(r => '<tr><td>' + esc_(r[3]) + '</td><td align="right">' + esc_(r[7]) + '</td><td align="right">' + esc_(r[8]) + '</td><td align="right" style="color:#b00"><b>' + esc_(r[9]) + '</b></td></tr>').join('')) : 'None - every pack is accounted for.') + '<br><br>';
+  html += '<b>2. Close count did not match next open count</b><br>' + (overnight.length ? table_(['Item', 'Packs different', 'Note'],
+    overnight.map(r => '<tr><td>' + esc_(r[3]) + '</td><td align="right">' + esc_(r[10]) + '</td><td>' + esc_(r[14]) + '</td></tr>').join('')) : 'None.') + '<br><br>';
+  if (sheetIssues.length) html += '<b>3. Count sheet problems</b><br>' + sheetIssues.map(r => '- ' + esc_(String(r[2]) === 'ALL' ? r[14] : r[3] + ': ' + r[14])).join('<br>') + '<br><br>';
+  ['RBH', 'IMPERIAL', 'JTI'].forEach(m => {
+    const o = order.filter(r => String(r[1]).toUpperCase() === m);
+    if (o.length) html += '<b>Suggested order - ' + m + '</b> (up to par)<br>' + table_(['Item', 'Last count', 'Par', 'Order'],
+      o.map(r => '<tr><td>' + esc_(r[3]) + '</td><td align="right">' + esc_(r[11]) + '</td><td align="right">' + esc_(r[12]) + '</td><td align="right"><b>' + esc_(r[13]) + '</b></td></tr>').join('')) + '<br>';
+  });
+  html += 'Order quantities are suggestions only - adjust for holidays and what is already on order.<br>' +
+    '<span style="color:#777;font-size:12px">Automatic email from the VM Tobacco Count Log (Weekly Review tab).</span></div>';
+  send_(VA_CHRISSAN, 'Tobacco count review - week of ' + wk + (missing.length ? ' - ' + missing.length + ' item(s) missing packs' : ''), html, VA_CC_JEFF);
+  idx.forEach(i => sh.getRange(i + 2, 16).setValue('Sent ' + Utilities.formatDate(new Date(), VA_TZ, 'yyyy-MM-dd')));
+}
+
 // ---------- ONE-TIME SETUP ----------
 function installAlertTriggers() {
-  const fns = ['vmSendCostAlerts', 'vmSendMarginCheck', 'vmSendHoursBudget', 'vmScheduleCheck', 'vmLabourRecap'];
+  const fns = ['vmSendCostAlerts', 'vmSendMarginCheck', 'vmSendHoursBudget', 'vmScheduleCheck', 'vmLabourRecap', 'vmSendTobaccoReview'];
   ScriptApp.getProjectTriggers().filter(t => fns.indexOf(t.getHandlerFunction()) !== -1).forEach(t => ScriptApp.deleteTrigger(t));
   ScriptApp.newTrigger('vmSendCostAlerts').timeBased().everyDays(1).atHour(20).create();
   ScriptApp.newTrigger('vmSendMarginCheck').timeBased().onWeekDay(ScriptApp.WeekDay.MONDAY).atHour(7).create();
   ScriptApp.newTrigger('vmLabourRecap').timeBased().onWeekDay(ScriptApp.WeekDay.TUESDAY).atHour(9).create();
   ScriptApp.newTrigger('vmSendHoursBudget').timeBased().onWeekDay(ScriptApp.WeekDay.WEDNESDAY).atHour(9).create();
   ScriptApp.newTrigger('vmScheduleCheck').timeBased().onWeekDay(ScriptApp.WeekDay.FRIDAY).atHour(14).create();
+  ScriptApp.newTrigger('vmSendTobaccoReview').timeBased().everyDays(1).atHour(7).create();
 }

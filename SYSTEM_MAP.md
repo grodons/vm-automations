@@ -20,6 +20,8 @@ Last updated: 2026-11-27.
 | Tue ~9 am | Labour recap email to Chrissan | Apps Script | `apps-script/VM_Alerts.gs` |
 | Wed ~9 am | Next week's hours budget email to Chrissan | Apps Script | `apps-script/VM_Alerts.gs` |
 | Fri ~2 pm | Schedule check (over budget / missing hours) to Chrissan | Apps Script | `apps-script/VM_Alerts.gs` |
+| Daily 9:47 pm | **VM Tobacco Count Review** (only works when new count sheets are filed) | Claude scheduled task trig_01XpAq5oADN14iwiqpLXfZTa | `scheduled-tasks/VM Tobacco Count Review.md` |
+| Daily ~7 am | Tobacco count review email to Chrissan (only when New rows) | Apps Script | `apps-script/VM_Alerts.gs` |
 
 Jeff is copied on every Chrissan email (VA_CC_JEFF in VM_Alerts.gs).
 
@@ -44,6 +46,9 @@ Jeff is copied on every Chrissan email (VA_CC_JEFF in VM_Alerts.gs).
 | Loblaws vendor / Loblaws > Statements | 1Cp_VC81qtwRAFg6nhmmLW8Fd-kx7YcUM / 17QRqmCB9YeGhcEEv0UIwvB6qPe71lZEs |
 | VM Sales Invoices (daily GL Financial PDFs by year) | 1b9AQ2CVszdUXEmOmDO2BcK6bpkdVoFej |
 | VM Employees > Payroll > 2026 > 7Shifts | 1waZC0dx69Y8zsXyQBAUjgxlrznzqEtFN |
+| Operations > Tobacco Counts (print PDF 1LJYE7KjQQ9L9z3qG_1yACqUtX4Kd8-kA) | 1AGfIbrTz7Tqg8t_F0ODc_2WwtR50JYX4 |
+| Tobacco Counts > 2026 / 2027 (filed count sheets) | 15sO4o5viC6k65V_2HFJv-kutwljJR1eZ / 1v7X0FSpnZYPiq1_0w7cjo-VaeEZ3Yl9O |
+| Tobacco Counts > L-BOSS Tobacco Sales (Chrissan's weekly sub-dept 15 export) | 16Ar1slPCH1jhJkmWumnj3WLqNLQ2WuXM |
 
 ## 3. Sheets and docs
 
@@ -58,6 +63,9 @@ Jeff is copied on every Chrissan email (VA_CC_JEFF in VM_Alerts.gs).
 | Rules: VM AP Invoice Processing | 1Qct2mI3Rae9ThsKeu9Shjsdh18G9ijJq4_LqDMn3K6A | |
 | Rules: VM Price & Margin Alerts | 1e1lS5d5PhDKNxK0bbYd7PJPgsVvPJ1fMFl-edqdEB8g | |
 | Rules: VM Labour Control | 12qGQBxO8zAxbQd8k69l6gYyWDJGbo_PMmNWLixC_XBM | |
+| Rules: VM Tobacco Count Review | 1_KQ3SWcHp75ZpTgf0ktyqxnGISA-lmX6WFX3iv9tMy4 | |
+| VM Tobacco Count Log (Items / Weekly Review / Counts) | 1o2Qv8yl7dHdN2NNJlQjGwEJlqlFADKQs1u8BJViyGcU | Chrissan |
+| SOP - Tobacco Counts - Operations > 02 Instructions & Job Aids (print for staff) | 19gJeQxDdh54WalgbGpGzajrKQTdehZR9awi3B2z_ts8 | All staff (printed), Chrissan |
 | SOP - Pricing & Margin (Chrissan) - Operations > 02 Instructions & Job Aids | 1wh9mb4ooeMwWvlwLj54jMacQ3RVtCKBgHdLVITwsfDc | Chrissan |
 | SOP - Scanning Invoices - Operations > 02 Instructions & Job Aids (print for staff) | 15S9MqRNuW8HfZw1ZQcJyhJPaOZAPxjIBy2DWtDq9J0A | All staff (printed), Chrissan |
 | VM Winter Best Sellers (NEVER OUT list) | 1UgUYumdm0URGqIdgFKHo_KdOY39FBqZTb0GZVakRXvE | Chrissan |

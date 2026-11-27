@@ -9,6 +9,7 @@
  * FAIL-SAFES
  *  - Only moves files that currently sit in 11 VM SCANNED, the owner-only Email Inbox, or 12 VM NEEDS REVIEW.
  *  - Only moves INTO folders inside "1Purchase Invoices VM" (or Jeff's VM owner-only folder).
+ *    Exception: tobacco count sheets ("YYMM DD Tobacco Count.pdf") may go into Operations > Tobacco Counts.
  *    Never into 00 ARCHIVED or 0 Accounts payable, and never back into an inbox folder.
  *  - New names must look like "YYMM DD ... .pdf" (or blank = keep name). No slashes.
  *  - Max 60 files per run; stops before the time limit; never deletes; never touches a line that has a Status.
@@ -17,6 +18,7 @@
 const MQ_SHEET_ID = '1uhBbGCocSJBFNFdJLVuDeWb-XwJVwMPVZAKbZNrDtfU';      // VM AP Move Queue (owner only)
 const MQ_ROOT_ID = '1ddsXenQZvG2H7vPLoxSE7XnwCzs5nqV_';                    // 105 VM > 1Purchase Invoices VM
 const MQ_PRIVATE_ROOT_ID = '17-np0sRUzD-lu0FwFWKjxZvWy5HuoytS';            // 105 VM > 00 OWNER ONLY - Jeff
+const MQ_TOBACCO_ROOT_ID = '1AGfIbrTz7Tqg8t_F0ODc_2WwtR50JYX4';            // VM Operations > Tobacco Counts (count sheets only)
 const MQ_SOURCE_IDS = ['1wuAOEPQcQ2fYCsiOpISRnJLIYefzEjQ8',                // 11 VM SCANNED
                        '1ndnJNlTW3HeZ3DgQ0jKKOKar7BvGTX5T'];               // OWNER ONLY > Email Inbox
 const MQ_REVIEW_IDS = ['10Mf5s3dALwd7aB8IkokrA-ODnyQDTGM_'];               // 12 VM NEEDS REVIEW (resolved items may leave)
@@ -66,8 +68,10 @@ function moveOne_(fileId, newName, destId) {
     if (/[\/\\]/.test(newName)) return { status: 'Refused', note: 'New name contains a slash' };
     if (!/^\d{4} \d{2} .+\.pdf$/i.test(newName)) return { status: 'Refused', note: 'New name does not match "YYMM DD ... .pdf"' };
     if (newName.length > 150) return { status: 'Refused', note: 'New name too long' };
-    file.setName(newName);
   }
+  if (check.tobacco && !/^\d{4} \d{2} Tobacco Count( p\d+)?\.pdf$/i.test(newName || file.getName()))
+    return { status: 'Refused', note: 'Only "YYMM DD Tobacco Count.pdf" files may go to Tobacco Counts' };
+  if (newName) file.setName(newName);
   file.moveTo(DriveApp.getFolderById(destId));
   return { status: 'Done', note: 'Moved to ' + check.path };
 }
@@ -79,12 +83,13 @@ function checkDestination_(folder) {
     if (MQ_BLOCKED_IDS.indexOf(cur.getId()) !== -1) return { ok: false, reason: 'Destination is a blocked folder (archived / AP)' };
     if (cur.getId() === MQ_ROOT_ID) return { ok: true, path: 'Purchase Invoices VM > ' + names.reverse().join(' > ') };
     if (cur.getId() === MQ_PRIVATE_ROOT_ID) return { ok: true, path: 'VM OWNER ONLY > ' + names.reverse().join(' > ') };
+    if (cur.getId() === MQ_TOBACCO_ROOT_ID && names.length > 0) return { ok: true, tobacco: true, path: 'Tobacco Counts > ' + names.reverse().join(' > ') };
     names.push(cur.getName());
     const up = cur.getParents();
     if (!up.hasNext()) break;
     cur = up.next();
   }
-  return { ok: false, reason: 'Destination is not inside 1Purchase Invoices VM or VM OWNER ONLY' };
+  return { ok: false, reason: 'Destination is not inside 1Purchase Invoices VM, VM OWNER ONLY or a Tobacco Counts year folder' };
 }
 
 // ===== Tab colours on the VM QBO Bill Entries sheets =====
