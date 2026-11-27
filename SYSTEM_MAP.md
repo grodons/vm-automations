@@ -12,7 +12,7 @@ Last updated: 2026-11-27.
 | Every 15 min | Save invoice PDFs from jeff@villagemarketatblue.com to OWNER ONLY > Email Inbox; sort email to Gmail "Loblaws" or "Invoices" | Apps Script, jeff@villagemarketatblue.com, project "Village Market Automations" | `apps-script/VM_Email_Saver.gs` |
 | Every 15 min | Carry out the VM AP Move Queue (rename + file PDFs) | same project | `apps-script/VM_Move_Queue.gs` |
 | Every 30 min | Colour VM QBO Bill Entries month tabs (yellow/green) | same project | `apps-script/VM_Move_Queue.gs` |
-| Daily 6:13 pm | **VM AP Invoice Processing** | Claude scheduled task (NOT YET CREATED - needs Jeff's OK, see SETUP) | `scheduled-tasks/VM AP Invoice Processing.md` |
+| Daily 6:13 pm | **VM AP Invoice Processing** | Claude scheduled task trig_01BiVCRbg5R9VmaC7qrFD1Yd | `scheduled-tasks/VM AP Invoice Processing.md` |
 | Daily 7:16 pm | **VM Price & Margin Alerts** | Claude scheduled task trig_014fvHQa6CU6pbf721tiNuKp | `scheduled-tasks/VM Price & Margin Alerts.md` |
 | Daily ~8 pm | Email new cost increases to Chrissan | Apps Script | `apps-script/VM_Alerts.gs` |
 | Mon ~7 am | Margin Check email to Chrissan | Apps Script | `apps-script/VM_Alerts.gs` |

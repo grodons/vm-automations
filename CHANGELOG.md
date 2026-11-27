@@ -6,3 +6,4 @@
 - 2026-11-27 (4): Built owner-only "VM Breakeven & Margin Model" (1Fpp3BKVkD7LZXo47IKZMIBgNcawMNce3Sqylm2IVyRo) from QBO P&Ls FY2023-FY2026. Proposed department margin targets loaded into the Price & Margin Log Targets tab (status PROPOSED). Flagged: QBO sales appear to include HST.
 - 2026-11-27 (5): Model now builds in Jeff's pay ($90k FY2027, up from $64k) and BDC (~$4,900/mo principal, ~$1,100/mo interest). Required blended margin 44.8%, other depts 52.1% (targets unchanged). Labour SPLH set to $200 (holds FY2026 staff labour 9.57%).
 - 2026-11-27 (6): Model: occupancy and sublease rent +4% every Jan 1 (FY2027 occupancy $203,055, sublease $27,611). Required blended margin 45.4%, other depts 52.8%; department targets +1 pt each.
+- 2026-11-27 (7): VM AP Invoice Processing scheduled task created (trig_01BiVCRbg5R9VmaC7qrFD1Yd, daily 6:13 pm).
