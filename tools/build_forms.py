@@ -95,50 +95,45 @@ T=[('OPENING',[
  'Tobacco OPEN count done before the first sale (Tobacco Count binder)',
  'Count float into till ($200)',
  'OLG and EXIT signs out; OLG signs updated',
- 'Fridge & freezer temps logged (Temp Log)',
- 'Floor check done (Floor Check Log) - entrance mats flat',
- 'Washroom checked and clean',
+ 'Temps logged - all 7 units (Temperature Log)',
+ 'Floor check + sweep (Floor Check Log + Sweep Log); entrance mats flat',
+ 'Staff washroom checked (Washroom Log)',
  'Face all products; rotate perishables (first in, first out)',
  'Stock impulse areas (checkout, entrance)',
- 'Highlight Tobacco List',
- 'Sweep floor and entrance']),
+ 'Highlight Tobacco List']),
 ('CASH AREA - during shift',[
  'Fill scratch tickets as needed',
  'Refill bags and receipt rolls',
  'Refill lighters and tobacco wall from back stock',
  'Fill cash area products (sunglasses, candy, etc.)',
- 'Fill water cooler at front',
+ 'Fill front water cooler fridge',
  'Clean, organize and sanitize cash area and lotto kiosk',
  'Empty cash area and lotto kiosk garbage']),
 ('STORE - during shift',[
- 'Scan every delivery invoice the same day ("Invoice" preset)',
- 'Check shelf tags - every item priced, tags match',
+ 'WED/THU delivery: check against invoice, put away same day, scan invoice',
+ 'Restock drinks, Grab n Go, chips, tobacco and coolers from back room',
+ 'Fill Arctic Ice freezer',
  'Check best-before dates; pull expired, log on Waste Report',
- 'Midday temps logged and midday floor check',
- 'Pull pop rack; refill coolers (2L Coke, water)',
- 'Refill and face chip aisles and bread rack',
- 'Work overstock: backroom, frozen, back cooler',
- 'Refill CTG / souvenir and H&B (pharmacy) overstock',
- 'Refill Grab n Go',
- 'Break down boxes; clean and tidy backroom',
- 'Clean microwave; wipe cooler and freezer doors']),
+ 'Midday temps, floor check and sweep logged',
+ 'Face shelves - every aisle',
+ 'Today\'s deep-clean job done (see rotation below)',
+ 'Break down boxes; clean and tidy back room']),
 ('CLOSING',[
  'Tobacco CLOSE count after last sale; binder back in drawer',
- 'Close temps logged and close floor check',
- 'Wipe Tobacco List',
- 'Face and block shelves and back wall',
+ 'Close temps, floor check and sweep logged',
+ 'Mop floors (entrance and any wet or sticky spots)',
+ 'Wipe Tobacco List; face and block shelves and back wall',
  'Report stock-outs, breakage and issues to manager',
- 'Scale and equipment off for the night',
- 'Creamers away; empty garbages and coffee bin',
- 'Garbage taken down to the garbage room',
- 'Clean floors; clean and stock staff washroom',
+ 'Scales off; empty garbages; garbage to garbage room',
  'Back room fans off',
  'OLG and EXIT signs in; garage door locked',
- 'Print OLG terminal daily report and L-BOSS end-of-day report',
- 'Count cash; return float(s) to $200',
- 'ATM cassette removed and locked in safe',
- 'All drawers locked; screens down; lights out',
- 'All doors locked'])]
+ 'Count cash, fill in Cash Count Slip, leave $200 float',
+ 'Cash + count slip + close-out report in the DROP SAFE',
+ 'Drawers locked; screens down; lights off',
+ 'Front door locked - push-test it (alarm is out of service)',
+ 'All other doors locked'])]
+ROT=('DEEP-CLEAN ROTATION:  MON dust + wipe shelves aisles 1-2  |  TUE aisles 3-4 + back wall  |  WED price-tag check on new stock  |  '
+     'THU price-tag audit one aisle  |  FRI wipe cooler + freezer doors and handles  |  SAT dust tobacco wall + cash area  |  SUN mop back room')
 wb=openpyxl.Workbook(); ws=wb.active; ws.title='Daily Tasks'; setup(ws,land=False)
 logo(ws,w=130); ws.row_dimensions[1].height=24; ws.row_dimensions[2].height=12
 ws['C1']='DAILY TASK SHEET'; ws['C1'].font=f(15,True)
@@ -158,6 +153,7 @@ for sec,items in T:
         box(ws,f'A{r}:I{r}',font=f(8)); ws.cell(r,1).alignment=LEFT; ws.row_dimensions[r].height=14.5; r+=1
 for lab in ['Opener (initials)','Closer (initials)']:
     ws.cell(r,1,lab); ws.merge_cells(start_row=r,start_column=1,end_row=r,end_column=2); box(ws,f'A{r}:I{r}',font=f(8.5,True)); r+=1
+ws.cell(r,1,ROT); ws.merge_cells(start_row=r,start_column=1,end_row=r,end_column=9); ws.cell(r,1).font=f(7.5,True); ws.cell(r,1).alignment=LEFT; ws.row_dimensions[r].height=30; r+=1
 ws.cell(r+1,1,'Manager reviewed: __________  Date: __________').font=f(8.5)
 ws.column_dimensions['A'].width=40; ws.column_dimensions['B'].width=17
 for c in 'CDEFGHI': ws.column_dimensions[c].width=6.3
@@ -193,9 +189,9 @@ wb.save('VM Sweep Log.xlsx')
 # ---------- 5. Bathroom Check Log (one sheet per day, posted on the washroom door) ----------
 wb=openpyxl.Workbook(); ws=wb.active; ws.title='Bathroom Check'; setup(ws,land=False)
 logo(ws,w=130); ws.row_dimensions[1].height=24; ws.row_dimensions[2].height=14
-ws['D1']='WASHROOM CHECK LOG'; ws['D1'].font=f(15,True)
+ws['D1']='STAFF WASHROOM CHECK LOG'; ws['D1'].font=f(15,True)
 ws['D2']='DATE: ______ / ______ / 20____'; ws['D2'].font=f(10)
-ws['A3']='Check at least every 2 hours while open, and right away if a guest reports a problem. ✓ = OK / done.  ✗ = problem - write what you did in NOTES and tell the manager.'
+ws['A3']='Staff only - shared with Craig\'s Cookies. Check at OPEN, MIDDAY and CLOSE. VM and Craig\'s take turns cleaning: write whose turn it was in NOTES. ✓ = OK / done.  ✗ = problem - write what you did in NOTES and tell the manager.'
 ws.merge_cells('A3:I3'); ws['A3'].font=f(8.5); ws['A3'].alignment=LEFT; ws.row_dimensions[3].height=26
 heads=['TIME','INITIALS','TOILET\nCLEAN','SINK &\nMIRROR','FLOOR\nDRY & CLEAN','TOILET\nPAPER','SOAP &\nPAPER TOWEL','GARBAGE\nEMPTIED','NOTES']
 for i,h in enumerate(heads,1): ws.cell(5,i,h)
@@ -206,10 +202,62 @@ box(ws,'A6:I19',font=f(9),align=CEN)
 for rr in range(6,20):
     if rr%2==0:
         for cc in range(1,9): ws.cell(rr,cc).fill=GREY
-ws['A21']='Out of supplies? Spares are in the back room. Clog or leak: put up the "Out of Order" sign, tell the manager, log it in the VM Equipment Repair Log.'; ws['A21'].font=f(8.5,i=True)
+ws['A21']='Spares (paper, soap, wet-floor signs) are in the back room. Clog or leak: put up the "Out of Order" sign, tell the manager and Craig\'s, log it in the VM Equipment Repair Log.'; ws['A21'].font=f(8.5,i=True)
 ws.merge_cells('A21:I21'); ws['A21'].alignment=LEFT; ws.row_dimensions[21].height=24
 ws['A23']='Manager check: ________   Keep with the Health & Safety binder.'; ws['A23'].font=f(8.5,i=True)
 for col,w in zip('ABCDEFGHI',[9,9,8,8,10,8,11,9,30]): ws.column_dimensions[col].width=w
 ws.print_area='A1:I23'
 wb.save('VM Washroom Check Log.xlsx')
 print('ok2')
+
+# ---------- 6. Temperature Log (one sheet per month) ----------
+U=['PRODUCE\nFRIDGE 1','PRODUCE\nFRIDGE 2','FREEZER 1','FREEZER 2','MERCH\nCOOLER 1','MERCH\nCOOLER 2','WATER COOLER\nFRIDGE']
+wb=openpyxl.Workbook(); ws=wb.active; ws.title='Temperature Log'; setup(ws)
+logo(ws); ws.row_dimensions[1].height=26; ws.row_dimensions[2].height=16
+ws['E1']='TEMPERATURE LOG'; ws['E1'].font=f(16,True)
+ws['L1']='MONTH: ______________  YEAR: ________'; ws['L1'].font=f(10)
+ws['A3']=('Read the thermometer inside each unit at OPEN and CLOSE and write the number in C.  SAFE: fridges and coolers 0 to 4 C.  Freezers -18 C or colder.  '
+          'Out of range? Circle it, close the door, check again in 30 minutes. Still out: move food to a working unit, tell the manager, log it in the Equipment Repair Log.')
+ws.merge_cells('A3:Q3'); ws['A3'].font=f(8.5); ws['A3'].alignment=LEFT; ws.row_dimensions[3].height=30
+ws.merge_cells('A5:A6'); ws['A5']='DAY'
+for k,u in enumerate(U):
+    c=2+2*k; ws.merge_cells(start_row=5,start_column=c,end_row=5,end_column=c+1); ws.cell(5,c,u); ws.cell(6,c,'OPEN'); ws.cell(6,c+1,'CLOSE')
+ws.cell(5,16,'INITIALS'); ws.merge_cells('P5:Q5'); ws.cell(6,16,'OPEN'); ws.cell(6,17,'CLOSE')
+box(ws,'A5:Q6',fill=BLACK,font=f(8,True,'FFFFFF'),align=CEN); ws.row_dimensions[5].height=28
+for d in range(1,32): ws.cell(6+d,1,d); ws.row_dimensions[6+d].height=16
+box(ws,'A7:Q37',font=f(9),align=CEN)
+for rr in range(7,38):
+    if rr%2:
+        for cc in range(1,18): ws.cell(rr,cc).fill=GREY
+ws['A39']='Manager check weekly: ________   Keep every month in the Health & Safety binder - the health inspector can ask for it.'; ws['A39'].font=f(8.5,i=True)
+ws.column_dimensions['A'].width=5
+for i in range(2,18): ws.column_dimensions[openpyxl.utils.get_column_letter(i)].width=7.2
+ws.print_area='A1:Q39'
+wb.save('VM Temperature Log.xlsx')
+
+# ---------- 7. Cash Count Slip (4 per page; one goes in the drop safe with the cash) ----------
+wb=openpyxl.Workbook(); ws=wb.active; ws.title='Cash Count Slip'; setup(ws,land=False)
+DEN=[('$100',100),('$50',50),('$20',20),('$10',10),('$5',5),('$2 coins',2),('$1 coins',1),('25c',0.25),('10c',0.10),('5c',0.05)]
+def slip(r0,c0):
+    L=openpyxl.utils.get_column_letter
+    ws.cell(r0,c0,'VILLAGE MARKET - CASH COUNT SLIP').font=f(10,True)
+    ws.cell(r0+1,c0,'Date: ________  Till: ____  Counted by: ______').font=f(8)
+    hdr=['','#','$']
+    for j,h in enumerate(hdr): ws.cell(r0+2,c0+j,h)
+    box(ws,f'{L(c0)}{r0+2}:{L(c0+2)}{r0+2}',fill=BLACK,font=f(8,True,'FFFFFF'),align=CEN)
+    for i,(lab,v) in enumerate(DEN):
+        rr=r0+3+i; ws.cell(rr,c0,lab)
+    rr=r0+3+len(DEN)
+    for k,lab in enumerate(['TOTAL COUNTED','LESS FLOAT LEFT IN TILL','CASH IN THIS DROP']):
+        ws.cell(rr+k,c0,lab)
+    box(ws,f'{L(c0)}{r0+3}:{L(c0+2)}{rr+2}',font=f(8))
+    for k in range(3): ws.cell(rr+k,c0).font=f(8,True)
+    ws.cell(rr+1,c0+2,200).font=f(8)
+    ws.cell(rr+3,c0,'Manager counted: $________  Initials: ____').font=f(8)
+    ws.cell(rr+4,c0,'Over / short: $________').font=f(8)
+for (r0,c0) in [(1,1),(1,5),(22,1),(22,5)]: slip(r0,c0)
+for c,w in zip('ABCDEFG',[24,7,11,4,24,7,11]): ws.column_dimensions[c].width=w
+for rr in range(1,42): ws.row_dimensions[rr].height=17
+ws.print_area='A1:G41'
+wb.save('VM Cash Count Slip.xlsx')
+print('ok3')
