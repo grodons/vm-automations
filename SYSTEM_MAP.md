@@ -36,7 +36,7 @@ Jeff is copied on every Chrissan email (VA_CC_JEFF in VM_Alerts.gs).
 | 00 OWNER ONLY - Jeff (inherited sharing OFF: jeff@gordonsmarket.ca + jeff@villagemarketatblue.com) | 17-np0sRUzD-lu0FwFWKjxZvWy5HuoytS |
 | OWNER ONLY > Email Inbox | 1ndnJNlTW3HeZ3DgQ0jKKOKar7BvGTX5T |
 | OWNER ONLY > QBO Bill Entries | 1Oiyg6ooBcP4qN2PlpZsZPM4Gm5FKzfBR |
-| OWNER ONLY > Breakeven & Margin Model | 1OHQbgDq_Odtlimj2bq60YaDrgHYkLINO |
+| OWNER ONLY > Breakeven & Margin Model (P&L CSVs in P&L's; model sheet 1Fpp3BKVkD7LZXo47IKZMIBgNcawMNce3Sqylm2IVyRo) | 1OHQbgDq_Odtlimj2bq60YaDrgHYkLINO |
 | 1Purchase Invoices VM | 1ddsXenQZvG2H7vPLoxSE7XnwCzs5nqV_ |
 | 11 VM SCANNED (paper scans inbox) | 1wuAOEPQcQ2fYCsiOpISRnJLIYefzEjQ8 |
 | 12 VM NEEDS REVIEW | 10Mf5s3dALwd7aB8IkokrA-ODnyQDTGM_ |
