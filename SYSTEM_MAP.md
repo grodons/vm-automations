@@ -81,7 +81,8 @@ Jeff is copied on every Chrissan email (VA_CC_JEFF in VM_Alerts.gs).
 | SOP - Daily Floor Checks (02) | 1Kd_-3ZrHPTIbd5DaOsqpmLhmeGFuifE3zufTpkhZP-I | All staff (printed) |
 | SOP - OLG Scratch Ticket Weekly Reconciliation (02) | 1WeDMfkfJFOlW1iFppKokUNu0zVodx0VLeCQZKZ6uXvc | Chrissan |
 | SOP - Daily Store Tasks (02) | 1oI7hH7jLP23SdRUzxDw8SgiYNhefv2jVKS3HwLqZ6vY | All staff (printed) |
-| Forms (05): VM Daily Floor Check Log / VM Daily Task Sheet (weekly) / VM OLG Scratch Weekly Reconciliation (xlsx) | 1yN556t70gDniio15pZVyTCfGxuhKdsyr / 1bNrtQy5WqErSFsrXoybxIYhzortxR3l1 / 1sync_sARsCZOGxNWzMDtb0VXyKejzuEm | |
+| Forms (05): VM Daily Floor Check Log / VM Daily Task Sheet (weekly) / VM OLG Scratch Weekly Reconciliation / VM Sweep Log / VM Washroom Check Log (xlsx) | 1yN556t70gDniio15pZVyTCfGxuhKdsyr / 16CddzZLkEv9K2Zv45t5DdSkoir_J6sYH / 1sync_sARsCZOGxNWzMDtb0VXyKejzuEm / 1stVBspChp62GQNw_DPwaFKcSCxmS1Qff / 1Ujf2NnzvmQehkSqu6OP3XbruWZzIlZBT | old task sheet archived |
+| 09 Equipment: VM Equipment Inventory / VM Equipment Repair Log (Sheets) | 19btcGlfX7TB8OAk89f93TBzH3EkCaIOJT0usS-XCiqg / 1a01gDrU6UWUoD_APCGKYdAQcm4OFPRMfwHbtSF2-s4Q | folder 1D-WO_qSYiyePqILbc7AkjE1SgPXTjAIx |
 | VM Winter Best Sellers (NEVER OUT list) | 1UgUYumdm0URGqIdgFKHo_KdOY39FBqZTb0GZVakRXvE | Chrissan |
 
 ## 4. Accounts

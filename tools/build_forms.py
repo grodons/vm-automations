@@ -119,8 +119,7 @@ T=[('OPENING',[
  'Refill and face chip aisles and bread rack',
  'Work overstock: backroom, frozen, back cooler',
  'Refill CTG / souvenir and H&B (pharmacy) overstock',
- 'Refill Grab n Go, hot dogs, slushies',
- "Refill St. Jimmy's pods and supplies",
+ 'Refill Grab n Go',
  'Break down boxes; clean and tidy backroom',
  'Clean microwave; wipe cooler and freezer doors']),
 ('CLOSING',[
@@ -129,7 +128,7 @@ T=[('OPENING',[
  'Wipe Tobacco List',
  'Face and block shelves and back wall',
  'Report stock-outs, breakage and issues to manager',
- 'Slushie machine off; scale, combi oven, proofer, dishwasher off',
+ 'Scale and equipment off for the night',
  'Creamers away; empty garbages and coffee bin',
  'Garbage taken down to the garbage room',
  'Clean floors; clean and stock staff washroom',
@@ -165,3 +164,52 @@ for c in 'CDEFGHI': ws.column_dimensions[c].width=6.3
 ws.print_area=f'A1:I{r+1}'
 wb.save('VM Daily Task Sheet (weekly).xlsx')
 print('ok')
+
+# ---------- 4. Sweep Log ----------
+wb=openpyxl.Workbook(); ws=wb.active; ws.title='Sweep Log'; setup(ws)
+logo(ws); ws.row_dimensions[1].height=26; ws.row_dimensions[2].height=16
+ws['D1']='SWEEP LOG'; ws['D1'].font=f(16,True)
+ws['I1']='MONTH: ______________  YEAR: ________'; ws['I1'].font=f(10)
+ws['A3']=('Sweep (and dry-mop if wet) the ENTRANCE, every AISLE, the CASH AREA and the BACK ROOM at OPEN and CLOSE, plus MIDDAY and any time snow, slush or a spill is tracked in. '
+          'Write the actual time you finished - never fill in times ahead. This log is our proof of care if someone slips.')
+ws.merge_cells('A3:L3'); ws['A3'].font=f(8.5); ws['A3'].alignment=LEFT; ws.row_dimensions[3].height=28
+ws.merge_cells('A5:A6'); ws['A5']='DAY'
+for col,lab in zip(['B','E','H'],['OPEN','MIDDAY','CLOSE']):
+    i=openpyxl.utils.column_index_from_string(col); ws.merge_cells(start_row=5,start_column=i,end_row=5,end_column=i+2); ws.cell(5,i,lab)
+    for j,t in enumerate(['TIME DONE','INITIALS','WET-FLOOR\nSIGN OUT?']): ws.cell(6,i+j,t)
+ws.merge_cells('K5:L6'); ws['K5']='EXTRA SWEEPS (time + initials) / NOTES'
+box(ws,'A5:L6',fill=BLACK,font=f(8.5,True,'FFFFFF'),align=CEN); ws.row_dimensions[6].height=24
+for d in range(1,32):
+    rr=6+d; ws.cell(rr,1,d); ws.row_dimensions[rr].height=17; ws.merge_cells(start_row=rr,start_column=11,end_row=rr,end_column=12)
+box(ws,'A7:L37',font=f(9),align=CEN)
+for rr in range(7,38):
+    if rr%2: 
+        for cc in range(1,11): ws.cell(rr,cc).fill=GREY
+ws['A39']='Manager check at month end: ________   File in the Health & Safety binder. Keep every month - never throw a sweep log away.'; ws['A39'].font=f(8.5,i=True)
+for col,w in zip('ABCDEFGHIJKL',[6,9,9,10,9,9,10,9,9,10,26,26]): ws.column_dimensions[col].width=w
+ws.print_area='A1:L39'
+wb.save('VM Sweep Log.xlsx')
+
+# ---------- 5. Bathroom Check Log (one sheet per day, posted on the washroom door) ----------
+wb=openpyxl.Workbook(); ws=wb.active; ws.title='Bathroom Check'; setup(ws,land=False)
+logo(ws,w=130); ws.row_dimensions[1].height=24; ws.row_dimensions[2].height=14
+ws['D1']='WASHROOM CHECK LOG'; ws['D1'].font=f(15,True)
+ws['D2']='DATE: ______ / ______ / 20____'; ws['D2'].font=f(10)
+ws['A3']='Check at least every 2 hours while open, and right away if a guest reports a problem. ✓ = OK / done.  ✗ = problem - write what you did in NOTES and tell the manager.'
+ws.merge_cells('A3:I3'); ws['A3'].font=f(8.5); ws['A3'].alignment=LEFT; ws.row_dimensions[3].height=26
+heads=['TIME','INITIALS','TOILET\nCLEAN','SINK &\nMIRROR','FLOOR\nDRY & CLEAN','TOILET\nPAPER','SOAP &\nPAPER TOWEL','GARBAGE\nEMPTIED','NOTES']
+for i,h in enumerate(heads,1): ws.cell(5,i,h)
+box(ws,'A5:I5',fill=BLACK,font=f(8,True,'FFFFFF'),align=CEN); ws.row_dimensions[5].height=32
+for k in range(14):
+    rr=6+k; ws.row_dimensions[rr].height=30
+box(ws,'A6:I19',font=f(9),align=CEN)
+for rr in range(6,20):
+    if rr%2==0:
+        for cc in range(1,9): ws.cell(rr,cc).fill=GREY
+ws['A21']='Out of supplies? Spares are in the back room. Clog or leak: put up the "Out of Order" sign, tell the manager, log it in the VM Equipment Repair Log.'; ws['A21'].font=f(8.5,i=True)
+ws.merge_cells('A21:I21'); ws['A21'].alignment=LEFT; ws.row_dimensions[21].height=24
+ws['A23']='Manager check: ________   Keep with the Health & Safety binder.'; ws['A23'].font=f(8.5,i=True)
+for col,w in zip('ABCDEFGHI',[9,9,8,8,10,8,11,9,30]): ws.column_dimensions[col].width=w
+ws.print_area='A1:I23'
+wb.save('VM Washroom Check Log.xlsx')
+print('ok2')
