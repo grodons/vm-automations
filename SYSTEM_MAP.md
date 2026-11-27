@@ -109,3 +109,6 @@ Jeff is copied on every Chrissan email (VA_CC_JEFF in VM_Alerts.gs).
 
 | Forms (05): VM Temperature Log / VM Cash Count Slip (xlsx) | 1j-YwiijhXxhmQaTXMourmFB1Z78UlAmg / 1_KamNi5XYxqZKw1KFMdMH1Gs95VDFDYD | |
 | SOPs (02): 2611 27 SOP - Daily Close-Out & Cash Drop / Temperature Log / Daily Store Tasks (v2) | 1nJ4DzST3Mo7TYutOseWKwpHdCm7Ahqc-FHmmzDvnQ9M / 1_W9oSkiUK_z5R1iofqMgv1zBZ34MFZsvMGeJt4M1bgQ / 1DSg5n_Rcy6VgR42n0JhhiV0xQuYNWIVFozjNpLiwt-8 | old Daily Store Tasks in 99 Archive |
+| Scheduled task: VM Waste Journal Entry (days 2-10, 7:23 am) | trig_01NyUh1maJsLZaKfDpTLqoWS | rules doc 1bIiEqBznB693yL0bC-8WLfSmdN8lhXxQ7pW1y5Xqwx8 |
+| VM Waste JE Log (OWNER ONLY) | 1ze4KhcUDYYZhn1ZVff-bTkls4dh2fNZlGB7pRjfQqdA | 105 VM > 00 OWNER ONLY - Jeff; emails by vmSendWasteJE 8 am |
+| Monthly Waste Report 2026 / 2025 (Chrissan, read only) | 1eycerCiHTcjb0HUlLyRIW4rBNAWeoyv6-8_5YxVuaR8 / 14z7XWnK9speZrPgZ2hfQlwDp2DBjbt-5trIw7HOw7oE | |

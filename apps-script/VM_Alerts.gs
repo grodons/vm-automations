@@ -18,6 +18,7 @@
 const VA_PRICE_ID = '1i10aLUd2dx0Me5aWImdDcB6nzc_8d2O56Rl3sJBhu6A';   // VM Price & Margin Log
 const VA_LABOUR_ID = '1kdP-EtyQPTVL8sSA6hiH9UZGyXQl37T-Twq__zQUcyI';  // VM Labour Control
 const VA_TOBACCO_ID = '1o2Qv8yl7dHdN2NNJlQjGwEJlqlFADKQs1u8BJViyGcU'; // VM Tobacco Count Log
+const VA_WASTE_JE_ID = '1ze4KhcUDYYZhn1ZVff-bTkls4dh2fNZlGB7pRjfQqdA'; // VM Waste JE Log (OWNER ONLY) - JE figures go to Jeff only
 const VA_CHRISSAN = 'chrissan@villagemarketatblue.com';
 const VA_JEFF = 'jeff@gordonsmarket.ca';                              // copies + warnings
 const VA_CC_JEFF = true;                                              // Jeff copied on every Chrissan email
@@ -243,9 +244,51 @@ function vmSendTobaccoReview() {
   idx.forEach(i => sh.getRange(i + 2, 16).setValue('Sent ' + Utilities.formatDate(new Date(), VA_TZ, 'yyyy-MM-dd')));
 }
 
+// ---------- 7. Waste journal entry (daily 8am) ----------
+// JEs tab (Claude): Ready / Check rows not yet emailed -> Jeff ONLY (JE figures are owner-only).
+// Issues tab (Claude): New rows not yet emailed -> Chrissan (product + problem only, no JE figures), Jeff copied.
+function vmSendWasteJE() {
+  const ss = SpreadsheetApp.openById(VA_WASTE_JE_ID);
+  const je = ss.getSheetByName('JEs'), is = ss.getSheetByName('Issues');
+  const today = Utilities.formatDate(new Date(), VA_TZ, 'yyyy-MM-dd');
+  const money = v => (Number(v) || 0).toFixed(2);
+  if (je.getLastRow() >= 2) {
+    const d = je.getRange(2, 1, je.getLastRow() - 1, 19).getValues();
+    const idx = []; d.forEach((r, i) => { const st = String(r[9]).trim(); if ((st === 'Ready' || st === 'Check') && String(r[17]).trim() === '' && r[18] !== true) idx.push(i); });
+    if (idx.length > 6) { send_(VA_JEFF, 'VM waste JE HELD - ' + idx.length + ' months waiting (limit 6)', 'Check the JEs tab of the VM Waste JE Log.', false); }
+    else if (idx.length) {
+      let html = '<div style="font-family:Arial;font-size:14px">Waste journal entr' + (idx.length > 1 ? 'ies' : 'y') + ' ready to post in QBO (Journal entry, dated the period end):<br><br>';
+      idx.forEach(i => { const r = d[i];
+        const pe = r[1] instanceof Date ? Utilities.formatDate(r[1], VA_TZ, 'yyyy-MM-dd') : esc_(r[1]);
+        html += '<b>' + esc_(r[0]) + '</b> - date ' + pe + (String(r[9]) === 'Check' ? ' <span style="color:#b00"><b>CHECK FIRST:</b> ' + esc_(r[16]) + '</span>' : '') + '<br>' +
+          table_(['Account', 'Debit', 'Credit'],
+            '<tr><td>52910 Food Waste</td><td align="right">' + money(r[11]) + '</td><td></td></tr>' +
+            '<tr><td>64910 Cleaning and Repairs (store use)</td><td align="right">' + money(r[12]) + '</td><td></td></tr>' +
+            '<tr><td>52900 Purchases - Grocery</td><td></td><td align="right">' + money(r[13]) + '</td></tr>') +
+          'Memo: ' + esc_(r[14]) + (r[16] && String(r[9]) !== 'Check' ? '<br>Note: ' + esc_(r[16]) : '') + '<br><br>'; });
+      html += 'After posting, tick <b>Posted in QBO</b> on the JEs tab.<br><span style="color:#777;font-size:12px">Automatic email from the VM Waste JE Log (OWNER ONLY).</span></div>';
+      send_(VA_JEFF, 'VM waste JE to post - ' + idx.map(i => d[i][0]).join(', '), html, false);
+      idx.forEach(i => je.getRange(i + 2, 18).setValue('Sent ' + today));
+    }
+  }
+  if (is.getLastRow() >= 2) {
+    const d = is.getRange(2, 1, is.getLastRow() - 1, 7).getValues();
+    const idx = []; d.forEach((r, i) => { if (String(r[5]).trim() === 'New' && String(r[6]).trim() === '') idx.push(i); });
+    if (!idx.length) return;
+    if (idx.length > 60) { send_(VA_JEFF, 'VM waste fixes HELD - ' + idx.length + ' lines (limit 60)', 'Check the Issues tab of the VM Waste JE Log before anything goes to Chrissan.', false); return; }
+    const months = [...new Set(idx.map(i => String(d[i][0])))];
+    let html = '<div style="font-family:Arial;font-size:14px">Hi Chrissan,<br><br>A few lines on the Monthly Waste Report need fixing before the month can be closed (' + months.join(', ') + '):<br><br>' +
+      table_(['Month tab', 'Row', 'Product', 'What to fix'], idx.map(i => '<tr><td>' + esc_(d[i][0]) + '</td><td>' + esc_(d[i][1]) + '</td><td>' + esc_(d[i][2]) + '</td><td>' + esc_(d[i][3]) + '</td></tr>').join('')) +
+      '<br>Please fix them by the 10th. Every line needs a code (E, R, D or SU), a quantity and a cost per unit, and the tab needs a TOTAL row.<br>' +
+      '<span style="color:#777;font-size:12px">Automatic email - checked daily until the month is complete.</span></div>';
+    send_(VA_CHRISSAN, 'Waste report - ' + idx.length + ' line(s) to fix', html, VA_CC_JEFF);
+    idx.forEach(i => { is.getRange(i + 2, 6).setValue('Sent'); is.getRange(i + 2, 7).setValue('Sent ' + today); });
+  }
+}
+
 // ---------- ONE-TIME SETUP ----------
 function installAlertTriggers() {
-  const fns = ['vmSendCostAlerts', 'vmSendMarginCheck', 'vmSendHoursBudget', 'vmScheduleCheck', 'vmLabourRecap', 'vmSendTobaccoReview'];
+  const fns = ['vmSendCostAlerts', 'vmSendMarginCheck', 'vmSendHoursBudget', 'vmScheduleCheck', 'vmLabourRecap', 'vmSendTobaccoReview', 'vmSendWasteJE'];
   ScriptApp.getProjectTriggers().filter(t => fns.indexOf(t.getHandlerFunction()) !== -1).forEach(t => ScriptApp.deleteTrigger(t));
   ScriptApp.newTrigger('vmSendCostAlerts').timeBased().everyDays(1).atHour(20).create();
   ScriptApp.newTrigger('vmSendMarginCheck').timeBased().onWeekDay(ScriptApp.WeekDay.MONDAY).atHour(7).create();
@@ -253,4 +296,5 @@ function installAlertTriggers() {
   ScriptApp.newTrigger('vmSendHoursBudget').timeBased().onWeekDay(ScriptApp.WeekDay.WEDNESDAY).atHour(9).create();
   ScriptApp.newTrigger('vmScheduleCheck').timeBased().onWeekDay(ScriptApp.WeekDay.FRIDAY).atHour(14).create();
   ScriptApp.newTrigger('vmSendTobaccoReview').timeBased().everyDays(1).atHour(7).create();
+  ScriptApp.newTrigger('vmSendWasteJE').timeBased().everyDays(1).atHour(8).create();
 }
