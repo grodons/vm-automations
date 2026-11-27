@@ -8,3 +8,4 @@
 - 2026-11-27 (6): Model: occupancy and sublease rent +4% every Jan 1 (FY2027 occupancy $203,055, sublease $27,611). Required blended margin 45.4%, other depts 52.8%; department targets +1 pt each.
 - 2026-11-27 (7): VM AP Invoice Processing scheduled task created (trig_01BiVCRbg5R9VmaC7qrFD1Yd, daily 6:13 pm).
 - 2026-11-27 (8): Scripts installed by Jeff. Tested: move queue (Wawanesa renewal moved to 12 VM NEEDS REVIEW), email saver (3 PDFs saved), tab colours. Fix: email saver skips older messages in long threads (a Sep 30 remittance slip was picked up from an old thread).
+- 2026-11-27 (9): Jeff confirmed HST is posted on its own line in the daily sales JE - model set to N (QBO sales are pre-tax). Card fee rate 1.94%, staff payroll 9.05% of sales. Unexplained 5.8% gap between QBO sales and L-BOSS PLU sales remains; Price & Margin targets kept at the conservative (L-BOSS basis) level until reconciled.
