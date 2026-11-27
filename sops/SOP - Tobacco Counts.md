@@ -65,7 +65,7 @@ It takes about **10 minutes** per count once you know the wall.
 
 ## For Chrissan
 
-- **Every Monday**, export the L-BOSS **"PLU by sub-dept"** report for **sub-dept 15 (Tobacco)** for last Monday to Sunday. Save it as a PDF in **Operations > Tobacco Counts > L-BOSS Tobacco Sales**. Without it, the system can't check for missing packs.
+- **Every Monday**, export the L-BOSS **"PLU by sub-dept"** report for **sub-dept 15 (Tobacco)** for last Monday to Sunday. Save it as a PDF in **Operations > 01 Daily Counts & Logs > Tobacco Counts > L-BOSS Tobacco Sales**. Without it, the system can't check for missing packs.
 - **Tuesday morning** you'll get the **Tobacco count review** email:
   1. **Missing packs:** the count says more was used than L-BOSS says was sold. Check for wrong-button sales (e.g. rung as a different brand), damaged or returned packs, and counting mistakes. If it keeps happening on the same items or shifts, tell Jeff.
   2. **Close did not match next open:** a counting error, or stock moved overnight. Follow up with the people who counted.
@@ -73,7 +73,7 @@ It takes about **10 minutes** per count once you know the wall.
   4. **Suggested order** for each supplier: order up to PAR, rounded to full cartons. Adjust for holidays and anything already on order.
 - **Circled MIN numbers** during the week mean an item is running low. Top it up on the next order, or sooner for top sellers.
 - **Changing Min, Par or the item list:** edit the **Items** tab in **VM Tobacco Count Log**, then ask Jeff to have Claude reprint the sheet.
-- **Printing:** print **VM Tobacco Count Sheet - PRINT** (Operations > Tobacco Counts) **landscape, letter size**. Keep 4 weeks of blank sets in the binder.
+- **Printing:** print **VM Tobacco Count Sheet - PRINT** (Operations > 01 Daily Counts & Logs > Tobacco Counts) **landscape, letter size**. Keep 4 weeks of blank sets in the binder.
 - **Shredding:** shred scanned sheets that are more than 1 week old.
 
 ## Questions

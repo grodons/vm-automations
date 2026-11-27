@@ -8,11 +8,11 @@ Rules for the Claude scheduled task **"VM Tobacco Count Review"**, which runs da
 
 | What | ID |
 |---|---|
-| Operations > Tobacco Counts (folder) | 1AGfIbrTz7Tqg8t_F0ODc_2WwtR50JYX4 |
+| Operations > 01 Daily Counts & Logs > Tobacco Counts (folder) | 1AGfIbrTz7Tqg8t_F0ODc_2WwtR50JYX4 |
 | Filed count sheets 2026 / 2027 | 15sO4o5viC6k65V_2HFJv-kutwljJR1eZ / 1v7X0FSpnZYPiq1_0w7cjo-VaeEZ3Yl9O |
 | L-BOSS Tobacco Sales (Chrissan's weekly export) | 16Ar1slPCH1jhJkmWumnj3WLqNLQ2WuXM |
 | VM Tobacco Count Log (sheet) | 1o2Qv8yl7dHdN2NNJlQjGwEJlqlFADKQs1u8BJViyGcU |
-| Printable sheet (PDF) | 1LJYE7KjQQ9L9z3qG_1yACqUtX4Kd8-kA |
+| Printable sheet (PDF) | 1aNHjnSggOuX48WwLrEn32hV4-NhoRwAy |
 | Tobacco invoices: 1Purchase Invoices VM > RBH / Imperial / JTI Macdonald / Core-Mark | 1wmV7HBprfJ2NLipxQ9tkIqNqQF5PVn4I / 1FqZS1H5Lpjg7yMqAPGo9P_3ewhCu5xXu / 1OuVCrv4zszfYv3VgvcOIqpyq8rA6GKBh / 1eeem1ah6rVuGWGwKilbiTXhTONCVFOBk |
 
 The VM AP Invoice Processing task files scanned count sheets as "YYMM DD Tobacco Count.pdf" (YYMM DD = the Monday the week starts), with " p2", " p3" added when a week has more than one file.

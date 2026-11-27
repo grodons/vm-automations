@@ -6,6 +6,15 @@ import csv, collections, math, json, sys, re
 from reportlab.lib.pagesizes import letter, landscape
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+import os
+# Brand: Futura Bold headings / Futura PT Book body. Futura isn't licensed here, so Poppins (closest geometric sans) is used.
+GF = '/usr/share/fonts/truetype/google-fonts/'
+pdfmetrics.registerFont(TTFont('VM-Bold', GF + 'Poppins-Bold.ttf'))
+pdfmetrics.registerFont(TTFont('VM-Book', GF + 'Poppins-Regular.ttf'))
+pdfmetrics.registerFont(TTFont('VM-Med', GF + 'Poppins-Medium.ttf'))
+LOGO = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'brand', 'VM_horizontal-lockup-black-crop.png')
 
 plu_csv, sales_csv, out = sys.argv[1:4]
 MAKERS = [('RBH', '0000619'), ('IMPERIAL', '0000593'), ('JTI', '0000601')]
@@ -51,7 +60,7 @@ c.setTitle('Village Market - Weekly Tobacco Count Sheet')
 cols = [('ITEM', 2.75), ('UPC', 0.45), ('MIN', 0.38), ('PAR', 0.38)]
 dayw = 0.43
 DAYS = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
-RH = 0.205 * inch; top_hdr = 1.05 * inch; foot = 0.95 * inch
+RH = 0.2 * inch; top_hdr = 1.3 * inch; foot = 0.95 * inch
 rows = []
 last = None
 for it in items:
@@ -76,36 +85,38 @@ def grid_x():
 xs = grid_x()
 for pn, pg in enumerate(pages, 1):
     y = H - M
-    c.setFont('Helvetica-Bold', 13); c.drawString(x0, y - 12, 'VILLAGE MARKET  -  TOBACCO COUNT')
-    c.setFont('Helvetica', 10)
-    c.drawString(x0 + 3.75 * inch, y - 12, 'Week starting MONDAY:  ______ / ______ / 20____   (month / day)')
-    c.drawRightString(W - M, y - 12, f'Page {pn} of {len(pages)}')
-    c.setFont('Helvetica', 7.5)
-    c.drawString(x0, y - 25, 'Count EVERY pack on the wall AND in back stock.  Write the number of PACKS (20s and 25s are separate lines).  Full sealed carton: 20s = 10 packs, 25s = 8 packs.  Write 0 if none - never leave blank.')
-    c.drawString(x0, y - 35, 'OPEN = before the first sale and before putting away any delivery.   CLOSE = after the last sale.   Count at or below MIN?  Circle it.   CLOSE does not match next OPEN?  Circle both and tell Chrissan.')
+    lw = 1.25 * inch; lh = lw * 197 / 685
+    c.drawImage(LOGO, x0, y - lh - 2, width=lw, height=lh, mask='auto')
+    c.setFont('VM-Bold', 14); c.drawString(x0 + lw + 0.35 * inch, y - 18, 'TOBACCO COUNT')
+    c.setFont('VM-Book', 10)
+    c.drawString(x0 + 3.9 * inch, y - 18, 'Week starting MONDAY:  ______ / ______ / 20____   (month / day)')
+    c.drawRightString(W - M, y - 18, f'Page {pn} of {len(pages)}')
+    c.setFont('VM-Book', 6.8)
+    c.drawString(x0, y - 46, 'Count EVERY pack on the wall AND in back stock.  Write the number of PACKS (20s and 25s are separate lines).  Full sealed carton: 20s = 10 packs, 25s = 8 packs.  Write 0 if none - never leave blank.')
+    c.drawString(x0, y - 56, 'OPEN = before the first sale and before putting away any delivery.   CLOSE = after the last sale.   Count at or below MIN?  Circle it.   CLOSE does not match next OPEN?  Circle both and tell Chrissan.')
     # header rows
     hy = y - top_hdr + 2 * RH + 0.05 * inch
-    c.setFont('Helvetica-Bold', 8)
+    c.setFont('VM-Bold', 8)
     for i, (n, w) in enumerate(cols):
         c.drawCentredString((xs[i] + xs[i + 1]) / 2, hy - RH + 4, n)
     for d in range(7):
         a = xs[4 + d * 2]; b = xs[6 + d * 2]
         c.setFillGray(0.85 if d % 2 == 0 else 0.93); c.rect(a, hy - 2 * RH, b - a, 2 * RH, fill=1, stroke=0); c.setFillGray(0)
         c.drawCentredString((a + b) / 2, hy - RH + 4, DAYS[d])
-        c.setFont('Helvetica', 7)
+        c.setFont('VM-Book', 7)
         c.drawCentredString((xs[4 + d * 2] + xs[5 + d * 2]) / 2, hy - 2 * RH + 4, 'OPEN')
         c.drawCentredString((xs[5 + d * 2] + xs[6 + d * 2]) / 2, hy - 2 * RH + 4, 'CLOSE')
-        c.setFont('Helvetica-Bold', 8)
+        c.setFont('VM-Bold', 8)
     yy = hy - 2 * RH
     c.setLineWidth(0.6); c.line(xs[0], hy, xs[-1], hy)
     for kind, v in pg:
         if kind == 'H':
             c.setFillGray(0.2); c.rect(xs[0], yy - RH, xs[-1] - xs[0], RH, fill=1, stroke=0); c.setFillGray(1)
-            c.setFont('Helvetica-Bold', 8.5); c.drawString(xs[0] + 3, yy - RH + 4.5, v); c.setFillGray(0)
+            c.setFont('VM-Bold', 8.5); c.drawString(xs[0] + 3, yy - RH + 4.5, v); c.setFillGray(0)
         else:
-            c.setFont('Helvetica', 8); c.drawString(xs[0] + 3, yy - RH + 4.5, v['item'][:34])
-            c.setFont('Helvetica', 7); c.drawCentredString((xs[1] + xs[2]) / 2, yy - RH + 4.5, v['upc4'])
-            c.setFont('Helvetica-Bold', 8); c.drawCentredString((xs[2] + xs[3]) / 2, yy - RH + 4.5, str(v['min']))
+            c.setFont('VM-Book', 8); c.drawString(xs[0] + 3, yy - RH + 4.5, v['item'][:34])
+            c.setFont('VM-Book', 7); c.drawCentredString((xs[1] + xs[2]) / 2, yy - RH + 4.5, v['upc4'])
+            c.setFont('VM-Bold', 8); c.drawCentredString((xs[2] + xs[3]) / 2, yy - RH + 4.5, str(v['min']))
             c.drawCentredString((xs[3] + xs[4]) / 2, yy - RH + 4.5, str(v['par']))
             for d in range(7):
                 if d % 2 == 0:
@@ -114,15 +125,15 @@ for pn, pg in enumerate(pages, 1):
         yy -= RH
     # footer rows: initials + delivery
     for label in ['Counted by (initials)', 'Delivery put away (initials)']:
-        c.setFont('Helvetica-Bold', 8); c.drawString(xs[0] + 3, yy - RH + 4.5, label)
+        c.setFont('VM-Bold', 8); c.drawString(xs[0] + 3, yy - RH + 4.5, label)
         c.setLineWidth(0.4); c.line(xs[0], yy - RH, xs[-1], yy - RH); yy -= RH
     # vertical lines
     for i, xv in enumerate(xs):
         lw = 1.2 if i >= 4 and (i - 4) % 2 == 0 else 0.4
         c.setLineWidth(lw); c.line(xv, hy - (RH if i >= 5 and (i - 4) % 2 == 1 else 0) , xv, yy)
     c.setLineWidth(1); c.rect(xs[0], yy, xs[-1] - xs[0], hy - yy, fill=0)
-    c.setFont('Helvetica', 7.5)
-    c.drawString(x0, yy - 12, 'Notes (damaged, missing, returns):  ______________________________________________________________________________________________________________')
+    c.setFont('VM-Book', 7.5)
+    c.drawString(x0, yy - 12, 'Notes (damaged, missing, returns):  ' + '_' * 92)
     c.drawString(x0, yy - 24, 'Sheets stay in the binder in the drawer under the OLG terminal.  Every MONDAY: scan last week\'s sheets (all pages) on the "Invoice" preset, then start a new sheet.')
     c.showPage()
 c.save()

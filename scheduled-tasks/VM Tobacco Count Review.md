@@ -14,7 +14,7 @@ STEP 1 - Read the rules first: Google Doc "VM Tobacco Count Review" (in 105 Vill
 
 STEP 2 - Open "VM Tobacco Count Log" (ID 1o2Qv8yl7dHdN2NNJlQjGwEJlqlFADKQs1u8BJViyGcU): Items, Weekly Review and Counts tabs. Check the headers match the rules; if not, stop and report.
 
-STEP 3 - In Operations > Tobacco Counts year folders (2026 = 15sO4o5viC6k65V_2HFJv-kutwljJR1eZ, 2027 = 1v7X0FSpnZYPiq1_0w7cjo-VaeEZ3Yl9O) find "YYMM DD Tobacco Count*.pdf" files whose name is not in Counts column H. None = reply "Tobacco counts: nothing new" and stop. Max 3 weeks per run, oldest first.
+STEP 3 - In Operations > 01 Daily Counts & Logs > Tobacco Counts year folders (2026 = 15sO4o5viC6k65V_2HFJv-kutwljJR1eZ, 2027 = 1v7X0FSpnZYPiq1_0w7cjo-VaeEZ3Yl9O) find "YYMM DD Tobacco Count*.pdf" files whose name is not in Counts column H. None = reply "Tobacco counts: nothing new" and stop. Max 3 weeks per run, oldest first.
 
 STEP 4 - For each week: read every page of the handwritten sheet; match rows to Items by UPC last 4 + name; append Counts rows (whole numbers 0-300 only, otherwise blank + "UNREADABLE"); get packs received from RBH / Imperial / JTI Macdonald / Core-Mark invoices in 1Purchase Invoices VM dated in the week (quantities only, cartons: 20s = 10 packs, 25s = 8 packs); get L-BOSS sold from the sub-dept 15 "PLU by sub-dept" export in Tobacco Counts > L-BOSS Tobacco Sales (folder 16Ar1slPCH1jhJkmWumnj3WLqNLQ2WuXM). Append Weekly Review rows A:P (one per active item + an "ALL" row for sheet problems), Status "New", calculated in code exactly as the rules say. The VM Alerts script emails Chrissan at 7 am.
 

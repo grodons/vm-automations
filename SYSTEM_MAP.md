@@ -39,6 +39,16 @@ Jeff is copied on every Chrissan email (VA_CC_JEFF in VM_Alerts.gs).
 | OWNER ONLY > Email Inbox | 1ndnJNlTW3HeZ3DgQ0jKKOKar7BvGTX5T |
 | OWNER ONLY > QBO Bill Entries | 1Oiyg6ooBcP4qN2PlpZsZPM4Gm5FKzfBR |
 | OWNER ONLY > Breakeven & Margin Model (P&L CSVs in P&L's; model sheet 1Fpp3BKVkD7LZXo47IKZMIBgNcawMNce3Sqylm2IVyRo) | 1OHQbgDq_Odtlimj2bq60YaDrgHYkLINO |
+| Operations > 01 Daily Counts & Logs | 16CBaRRZxsVdAegSNDJmkvLsdGb8z9pwh |
+| Operations > 03 Policies & Training | 1GUlYU-D8Y4KKBmF9wYmDK7NMe4krx-8H |
+| Operations > 04 Health, Safety & Licences | 1Fe1Ktjrcso01kOEBTor6oxQHgPDndUmw |
+| Operations > 05 Forms & Templates (was Templates) | 15R-ujTn3BHzU37yUWN51MfzB71K0x6vH |
+| Operations > 06 Inventory, Suppliers & POS | 1APvuJlxq-6fqY0Dxbl-VdvsCH2ZhGV6E |
+| Operations > 07 Brand & Logos (was Logos) | 10NrOmsCqrTIJ2tYzBss8ey0ty6uDX9yy |
+| Operations > 98 TO DELETE - Jeff to review | 14q8zC70zt3NFBQ3wcp7Z0XRsSb4e-3oo |
+| Operations > 00 READ ME - Operations Folder Guide (Doc) | 1p1khs08yALzBdwpCciPhJM82NIItJ22lwcxCxHSxkMg |
+| OWNER ONLY > Company & Banking Records | 1kP_tFeYYHRWH9ibJmBc_SzL81k9Ots1A |
+| OWNER ONLY > VM Operations Reorg Plan (sheet, run by VM_Ops_Reorg.gs) | 1faiunA3zCFb_HUcKYgHOJM0VU2uF12v28tk_JWj6pT4 |
 | 1Purchase Invoices VM | 1ddsXenQZvG2H7vPLoxSE7XnwCzs5nqV_ |
 | 11 VM SCANNED (paper scans inbox) | 1wuAOEPQcQ2fYCsiOpISRnJLIYefzEjQ8 |
 | 12 VM NEEDS REVIEW | 10Mf5s3dALwd7aB8IkokrA-ODnyQDTGM_ |
@@ -46,7 +56,7 @@ Jeff is copied on every Chrissan email (VA_CC_JEFF in VM_Alerts.gs).
 | Loblaws vendor / Loblaws > Statements | 1Cp_VC81qtwRAFg6nhmmLW8Fd-kx7YcUM / 17QRqmCB9YeGhcEEv0UIwvB6qPe71lZEs |
 | VM Sales Invoices (daily GL Financial PDFs by year) | 1b9AQ2CVszdUXEmOmDO2BcK6bpkdVoFej |
 | VM Employees > Payroll > 2026 > 7Shifts | 1waZC0dx69Y8zsXyQBAUjgxlrznzqEtFN |
-| Operations > Tobacco Counts (print PDF 1LJYE7KjQQ9L9z3qG_1yACqUtX4Kd8-kA) | 1AGfIbrTz7Tqg8t_F0ODc_2WwtR50JYX4 |
+| Operations > 01 Daily Counts & Logs > Tobacco Counts (print PDF 1aNHjnSggOuX48WwLrEn32hV4-NhoRwAy) | 1AGfIbrTz7Tqg8t_F0ODc_2WwtR50JYX4 |
 | Tobacco Counts > 2026 / 2027 (filed count sheets) | 15sO4o5viC6k65V_2HFJv-kutwljJR1eZ / 1v7X0FSpnZYPiq1_0w7cjo-VaeEZ3Yl9O |
 | Tobacco Counts > L-BOSS Tobacco Sales (Chrissan's weekly sub-dept 15 export) | 16Ar1slPCH1jhJkmWumnj3WLqNLQ2WuXM |
 

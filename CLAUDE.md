@@ -7,3 +7,4 @@
 - PRIVACY: financial information (bill totals, statements, aging, pay, wage rates, P&L, debt) is for Jeff only and lives in 105 VM > 00 OWNER ONLY - Jeff. Chrissan may see item costs/margins, sales and HOURS (never wages or labour $).
 - Every automation needs fail-safes so no AI can make a costly mistake. Keep docs plain-language for Jeff (non-technical owner).
 - Asset sale planned: nothing here transfers to a buyer.
+- BRAND (Jeff, 2026-11-27): every document Claude creates for VM follows `brand/BRAND.md` (black & white, Futura look - Jost in Google Docs, VM logo with clear space).
