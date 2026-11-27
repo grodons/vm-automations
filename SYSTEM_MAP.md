@@ -117,3 +117,5 @@ Jeff is copied on every Chrissan email (VA_CC_JEFF in VM_Alerts.gs).
 | OWNER ONLY > Reports / QBO AP Aging folders | 1xlAaa5S67wVvN_Zfmvi2sRS5iU9FCEnx / 1Kng5Kr9YmnuptEPdo2TrxydSAOJ_Lvx9 | empty, not used |
 | VM Never Out & Best Sellers (was VM Winter Best Sellers) | 1UgUYumdm0URGqIdgFKHo_KdOY39FBqZTb0GZVakRXvE | tab 'NEVER OUT - All year' (208 items, no Red Bull) |
 | 2611 27 VM PLU Clean-up & Best Sellers.xlsx | 14oOFfek0yQgjirYQVmpE0Xp7bqq4Q_Xt | 00 Claude > Pricing & Margin |
+| Scheduled task: VM Weekly Checks (Mon 5:41 am) | trig_01LJg6cTniHPcFtEqDwFzs1b | rules doc 135dL3Y-K94BsoE49s8iG5BpBFwGxVaqEDMkaPrOBBTM |
+| VM Weekly Checks sheet | 1da0hI395uHx1ADlg2JxWEiTXlZ6E7vwFcjvw4Q_PYhM | Operations > 00 Claude; email vmSendWeeklyChecks Mon 8 am |

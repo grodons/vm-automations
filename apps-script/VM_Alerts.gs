@@ -18,6 +18,7 @@
 const VA_PRICE_ID = '1i10aLUd2dx0Me5aWImdDcB6nzc_8d2O56Rl3sJBhu6A';   // VM Price & Margin Log
 const VA_LABOUR_ID = '1kdP-EtyQPTVL8sSA6hiH9UZGyXQl37T-Twq__zQUcyI';  // VM Labour Control
 const VA_TOBACCO_ID = '1o2Qv8yl7dHdN2NNJlQjGwEJlqlFADKQs1u8BJViyGcU'; // VM Tobacco Count Log
+const VA_CHECKS_ID = '1da0hI395uHx1ADlg2JxWEiTXlZ6E7vwFcjvw4Q_PYhM'; // VM Weekly Checks (OLG, equipment service, repairs)
 const VA_WASTE_JE_ID = '1ze4KhcUDYYZhn1ZVff-bTkls4dh2fNZlGB7pRjfQqdA'; // VM Waste JE Log (OWNER ONLY) - JE figures go to Jeff only
 const VA_CHRISSAN = 'chrissan@villagemarketatblue.com';
 const VA_JEFF = 'jeff@gordonsmarket.ca';                              // copies + warnings
@@ -286,9 +287,30 @@ function vmSendWasteJE() {
   }
 }
 
+// ---------- 8. Weekly checks (Mon 8am; sends only when Claude has written New rows) ----------
+function vmSendWeeklyChecks() {
+  const sh = SpreadsheetApp.openById(VA_CHECKS_ID).getSheetByName('Checks');
+  const last = sh.getLastRow(); if (last < 2) return;
+  const d = sh.getRange(2, 1, last - 1, 8).getValues();
+  const idx = []; d.forEach((r, i) => { if (String(r[5]).trim() === 'New' && String(r[7]).trim() === '') idx.push(i); });
+  if (!idx.length) return;
+  if (idx.length > 50) { send_(VA_JEFF, 'VM weekly checks HELD - ' + idx.length + ' rows (limit 50)', 'Check the VM Weekly Checks sheet before anything goes to Chrissan.', false); return; }
+  const today = Utilities.formatDate(new Date(), VA_TZ, 'yyyy-MM-dd');
+  const areas = ['OLG', 'Equipment service', 'Repairs'];
+  let html = '<div style="font-family:Arial;font-size:14px">Hi Chrissan,<br><br>This week\'s checks - please action these and mark them Done in the VM Weekly Checks sheet:<br><br>';
+  areas.concat([...new Set(idx.map(i => String(d[i][1])))].filter(a => areas.indexOf(a) === -1)).forEach(a => {
+    const rows = idx.filter(i => String(d[i][1]) === a); if (!rows.length) return;
+    html += '<b>' + esc_(a) + '</b><br>' + table_(['Item', 'Problem', 'What to do'],
+      rows.map(i => '<tr><td>' + esc_(d[i][2]) + '</td><td>' + esc_(d[i][3]) + '</td><td>' + esc_(d[i][4]) + '</td></tr>').join('')) + '<br>';
+  });
+  html += '<span style="color:#777;font-size:12px">Automatic email from VM Weekly Checks (Operations > 00 Claude).</span></div>';
+  send_(VA_CHRISSAN, 'VM weekly checks - ' + idx.length + ' item(s) to action', html, VA_CC_JEFF);
+  idx.forEach(i => { sh.getRange(i + 2, 6).setValue('Sent'); sh.getRange(i + 2, 8).setValue('Sent ' + today); });
+}
+
 // ---------- ONE-TIME SETUP ----------
 function installAlertTriggers() {
-  const fns = ['vmSendCostAlerts', 'vmSendMarginCheck', 'vmSendHoursBudget', 'vmScheduleCheck', 'vmLabourRecap', 'vmSendTobaccoReview', 'vmSendWasteJE'];
+  const fns = ['vmSendCostAlerts', 'vmSendMarginCheck', 'vmSendHoursBudget', 'vmScheduleCheck', 'vmLabourRecap', 'vmSendTobaccoReview', 'vmSendWasteJE', 'vmSendWeeklyChecks'];
   ScriptApp.getProjectTriggers().filter(t => fns.indexOf(t.getHandlerFunction()) !== -1).forEach(t => ScriptApp.deleteTrigger(t));
   ScriptApp.newTrigger('vmSendCostAlerts').timeBased().everyDays(1).atHour(20).create();
   ScriptApp.newTrigger('vmSendMarginCheck').timeBased().onWeekDay(ScriptApp.WeekDay.MONDAY).atHour(7).create();
@@ -297,4 +319,5 @@ function installAlertTriggers() {
   ScriptApp.newTrigger('vmScheduleCheck').timeBased().onWeekDay(ScriptApp.WeekDay.FRIDAY).atHour(14).create();
   ScriptApp.newTrigger('vmSendTobaccoReview').timeBased().everyDays(1).atHour(7).create();
   ScriptApp.newTrigger('vmSendWasteJE').timeBased().everyDays(1).atHour(8).create();
+  ScriptApp.newTrigger('vmSendWeeklyChecks').timeBased().onWeekDay(ScriptApp.WeekDay.MONDAY).atHour(8).create();
 }
