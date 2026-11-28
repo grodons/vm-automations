@@ -95,7 +95,7 @@ T=[('OPENING',[
  'Tobacco OPEN count done before the first sale (Tobacco Count binder)',
  'Count float into till ($200)',
  'OLG and EXIT signs out; OLG signs updated',
- 'Temps logged - all 7 units (Temperature Log)',
+ 'Temps logged - all 5 units (Temperature Log)',
  'Floor check + sweep (Floor Check Log + Sweep Log); entrance mats flat',
  'Staff washroom checked (Washroom Log)',
  'Face all products; rotate perishables (first in, first out)',
@@ -211,28 +211,30 @@ wb.save('VM Washroom Check Log.xlsx')
 print('ok2')
 
 # ---------- 6. Temperature Log (one sheet per month) ----------
-U=['PRODUCE\nFRIDGE 1','PRODUCE\nFRIDGE 2','FREEZER 1','FREEZER 2','MERCH\nCOOLER 1','MERCH\nCOOLER 2','WATER COOLER\nFRIDGE']
+U=['PRODUCE FRIDGE\n(back wall)\nwarmest of 4','FREEZER\nwarmest of 6','GRAB & GO\nCOOLER 1\n(Aisle 8)','GRAB & GO\nCOOLER 2\n(Aisle 8)','WATER COOLER\nFRIDGE\n(front)']
+NC=2+2*len(U)+1   # last column (initials close)
+L=openpyxl.utils.get_column_letter
 wb=openpyxl.Workbook(); ws=wb.active; ws.title='Temperature Log'; setup(ws)
 logo(ws); ws.row_dimensions[1].height=26; ws.row_dimensions[2].height=16
 ws['E1']='TEMPERATURE LOG'; ws['E1'].font=f(16,True)
-ws['L1']='MONTH: ______________  YEAR: ________'; ws['L1'].font=f(10)
-ws['A3']=('Read the thermometer inside each unit at OPEN and CLOSE and write the number in C.  SAFE: fridges and coolers 0 to 4 C.  Freezers -18 C or colder.  '
-          'Out of range? Circle it, close the door, check again in 30 minutes. Still out: move food to a working unit, tell the manager, log it in the Equipment Repair Log.')
-ws.merge_cells('A3:Q3'); ws['A3'].font=f(8.5); ws['A3'].alignment=LEFT; ws.row_dimensions[3].height=30
+ws['J1']='MONTH: ______________  YEAR: ________'; ws['J1'].font=f(10)
+ws['A3']=('Read the thermometers INSIDE each unit at OPEN and CLOSE and write the number in C. The produce fridge has 4 thermometers and the freezer has 6 - check them all and write the WARMEST one.  '
+          'SAFE: fridges and coolers 0 to 4 C.  Freezer -18 C or colder.  Out of range? Circle it, close the door, check again in 30 minutes. Still out: move food to a working unit, tell the manager, log it in the Equipment Repair Log.')
+ws.merge_cells(f'A3:{L(NC)}3'); ws['A3'].font=f(8.5); ws['A3'].alignment=LEFT; ws.row_dimensions[3].height=42
 ws.merge_cells('A5:A6'); ws['A5']='DAY'
 for k,u in enumerate(U):
     c=2+2*k; ws.merge_cells(start_row=5,start_column=c,end_row=5,end_column=c+1); ws.cell(5,c,u); ws.cell(6,c,'OPEN'); ws.cell(6,c+1,'CLOSE')
-ws.cell(5,16,'INITIALS'); ws.merge_cells('P5:Q5'); ws.cell(6,16,'OPEN'); ws.cell(6,17,'CLOSE')
-box(ws,'A5:Q6',fill=BLACK,font=f(8,True,'FFFFFF'),align=CEN); ws.row_dimensions[5].height=28
+ws.cell(5,NC-1,'INITIALS'); ws.merge_cells(f'{L(NC-1)}5:{L(NC)}5'); ws.cell(6,NC-1,'OPEN'); ws.cell(6,NC,'CLOSE')
+box(ws,f'A5:{L(NC)}6',fill=BLACK,font=f(8,True,'FFFFFF'),align=CEN); ws.row_dimensions[5].height=40
 for d in range(1,32): ws.cell(6+d,1,d); ws.row_dimensions[6+d].height=16
-box(ws,'A7:Q37',font=f(9),align=CEN)
+box(ws,f'A7:{L(NC)}37',font=f(9),align=CEN)
 for rr in range(7,38):
     if rr%2:
-        for cc in range(1,18): ws.cell(rr,cc).fill=GREY
+        for cc in range(1,NC+1): ws.cell(rr,cc).fill=GREY
 ws['A39']='Manager check weekly: ________   Keep every month in the Health & Safety binder - the health inspector can ask for it.'; ws['A39'].font=f(8.5,i=True)
 ws.column_dimensions['A'].width=5
-for i in range(2,18): ws.column_dimensions[openpyxl.utils.get_column_letter(i)].width=7.2
-ws.print_area='A1:Q39'
+for i in range(2,NC+1): ws.column_dimensions[L(i)].width=9
+ws.print_area=f'A1:{L(NC)}39'
 wb.save('VM Temperature Log.xlsx')
 
 # ---------- 7. Cash Count Slip (4 per page; one goes in the drop safe with the cash) ----------

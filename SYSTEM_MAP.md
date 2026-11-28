@@ -81,7 +81,7 @@ Jeff is copied on every Chrissan email (VA_CC_JEFF in VM_Alerts.gs).
 | SOP - Daily Floor Checks (02) | 1Kd_-3ZrHPTIbd5DaOsqpmLhmeGFuifE3zufTpkhZP-I | All staff (printed) |
 | SOP - OLG Scratch Ticket Weekly Reconciliation (02) | 1WeDMfkfJFOlW1iFppKokUNu0zVodx0VLeCQZKZ6uXvc | Chrissan |
 | SOP - Daily Store Tasks (02) | 1oI7hH7jLP23SdRUzxDw8SgiYNhefv2jVKS3HwLqZ6vY | All staff (printed) |
-| Forms (05): VM Daily Floor Check Log / VM Daily Task Sheet (weekly) / VM OLG Scratch Weekly Reconciliation / VM Sweep Log / VM Washroom Check Log (xlsx) | 1yN556t70gDniio15pZVyTCfGxuhKdsyr / 1lyC595MH7BZqxUcF1Xrq3hf8Sa-W0yS7 / 1sync_sARsCZOGxNWzMDtb0VXyKejzuEm / 1stVBspChp62GQNw_DPwaFKcSCxmS1Qff / 1A1e9yX18jZ_X2GV4tzu2Ri2MVPx-6hVQ | old task sheet archived |
+| Forms (05): VM Daily Floor Check Log / VM Daily Task Sheet (weekly) / VM OLG Scratch Weekly Reconciliation / VM Sweep Log / VM Washroom Check Log (xlsx) | 1yN556t70gDniio15pZVyTCfGxuhKdsyr / 1mon-_3CHJBaqw4NkXcse678WcJNEH9yi / 1sync_sARsCZOGxNWzMDtb0VXyKejzuEm / 1stVBspChp62GQNw_DPwaFKcSCxmS1Qff / 1A1e9yX18jZ_X2GV4tzu2Ri2MVPx-6hVQ | old task sheet archived |
 | 09 Equipment: VM Equipment Inventory / VM Equipment Repair Log (Sheets) | 19btcGlfX7TB8OAk89f93TBzH3EkCaIOJT0usS-XCiqg / 1a01gDrU6UWUoD_APCGKYdAQcm4OFPRMfwHbtSF2-s4Q | folder 1D-WO_qSYiyePqILbc7AkjE1SgPXTjAIx |
 | VM Winter Best Sellers (NEVER OUT list) | 1UgUYumdm0URGqIdgFKHo_KdOY39FBqZTb0GZVakRXvE | Chrissan |
 
@@ -107,7 +107,7 @@ Jeff is copied on every Chrissan email (VA_CC_JEFF in VM_Alerts.gs).
 - Financials (bill sheets, move queue, labour rate) live only in 00 OWNER ONLY - Jeff.
 - Email saver only touches emails that look like bills; banking-change emails stay in the Inbox, starred.
 
-| Forms (05): VM Temperature Log / VM Cash Count Slip (xlsx) | 1j-YwiijhXxhmQaTXMourmFB1Z78UlAmg / 1_KamNi5XYxqZKw1KFMdMH1Gs95VDFDYD | |
+| Forms (05): VM Temperature Log / VM Cash Count Slip (xlsx) | 1K6fNX3o7Tw_BhPMflqABTM-uxirKvaJi / 1_KamNi5XYxqZKw1KFMdMH1Gs95VDFDYD | |
 | SOPs (02): 2611 27 SOP - Daily Close-Out & Cash Drop / Temperature Log / Daily Store Tasks (v2) | 1nJ4DzST3Mo7TYutOseWKwpHdCm7Ahqc-FHmmzDvnQ9M / 1_W9oSkiUK_z5R1iofqMgv1zBZ34MFZsvMGeJt4M1bgQ / 1DSg5n_Rcy6VgR42n0JhhiV0xQuYNWIVFozjNpLiwt-8 | old Daily Store Tasks in 99 Archive |
 | Scheduled task: VM Waste Journal Entry (days 2-10, 7:23 am) | trig_01NyUh1maJsLZaKfDpTLqoWS | rules doc 1bIiEqBznB693yL0bC-8WLfSmdN8lhXxQ7pW1y5Xqwx8 |
 | VM Waste JE Log (OWNER ONLY) | 1ze4KhcUDYYZhn1ZVff-bTkls4dh2fNZlGB7pRjfQqdA | 105 VM > 00 OWNER ONLY - Jeff; emails by vmSendWasteJE 8 am |
